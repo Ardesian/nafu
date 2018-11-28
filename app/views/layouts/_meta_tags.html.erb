@@ -1,0 +1,61 @@
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+<%= action_cable_meta_tag %>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<% if content_for?(:title) %>
+  <title><%= yield :title %></title>
+  <meta name="title" content="<%= content_for(:title) %>">
+  <meta name="og:title" content="<%= content_for(:title) %>">
+  <meta name="twitter:title" content="<%= content_for(:title) %>">
+<% else %>
+  <title>NAFU</title>
+  <meta name="title" content="NAFU">
+  <meta name="og:title" content="NAFU">
+  <meta name="twitter:title" content="NAFU">
+<% end %>
+
+<% if content_for?(:description) %>
+  <meta name="description" content="<%= content_for(:description) %>">
+  <meta name="og:description" content="<%= content_for(:description) %>">
+  <meta name="twitter:description" content="<%= content_for(:description) %>">
+<% else %>
+  <% default_description = "" %>
+  <meta name="description" content="<%= default_description %>">
+  <meta name="og:description" content="<%= default_description %>">
+  <meta name="twitter:description" content="<%= default_description %>">
+<% end %>
+
+<% if content_for?(:viewport_tag) %>
+  <%= yield :viewport_tag %>
+<% else %>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<% end %>
+
+<% if content_for?(:favicon) %>
+  <%= yield :favicon %>
+<% else %>
+  <%#= render 'favicon' %>
+<% end %>
+
+<% unless Rails.env.production? %>
+  <%# This prevents Google from finding our Staging server %>
+  <meta name="robots" content="noindex">
+<% end %>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="<%= root_url %>">
+<meta property="og:site_name" content="NAFU">
+
+<meta name="uptime" content="nafu">
+<%= yield :meta %>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<%= stylesheet_link_tag    'application', media: 'all' %>
+<%= javascript_include_tag 'application' %>
+
+<%= yield :head %>
