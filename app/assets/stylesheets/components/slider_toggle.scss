@@ -1,8 +1,15 @@
+$slider-wrapper-height: 34px;
+$slider-wrapper-width: $slider-wrapper-height * 1.8;
+$slider-padding: 0;
+$border-size: 2px;
+$slider-size: $slider-wrapper-height - (2 * $border-size) - (2 * $slider-padding);
+
 label.switch-toggle {
   display: inline-block;
   position: relative;
-  width: 60px;
-  height: 34px;
+  vertical-align: middle;
+  width: $slider-wrapper-width;
+  height: $slider-wrapper-height;
 
   input { display: none; }
 
@@ -14,29 +21,31 @@ label.switch-toggle {
     left: 0;
     transition: 0.4s;
     cursor: pointer;
-    border: 2px solid grey;
+    box-sizing: border-box;
+    border: $border-size solid #E6E6E6;
     border-radius: 999px;
     background: white;
 
     &:before {
       position: absolute;
-      top: 4px;
-      bottom: 4px;
-      left: 4px;
+      top: $slider-padding;
+      left: $slider-padding;
       transition: 0.4s;
-      box-shadow: 1px 1px 2px grey;
+      box-shadow: 1px 1px 3px grey;
       border-radius: 999px;
       background: white;
-      width: 26px;
+      width: $slider-size;
+      height: $slider-size;
       content: "";
     }
   }
 
   input:checked + .switch {
-    background: green;
+    border-color: #4CD963;
+    background: #4CD963;
 
     &:before {
-      transform: translateX(22px);
+      left: $slider-wrapper-width - $slider-size - (2 * $border-size) - (2 * $slider-padding);
     }
   }
 }
