@@ -10,10 +10,11 @@
     &:hover, &:active { background: $bar-background; }
   }
   .table-view-cell {
-    display: block;
+    display: flex;
     position: relative;
-    vertical-align: middle;
+    align-items: center;
     padding: 0 10px;
+    width: 100%;
     color: black;
     line-height: $table-cell-height;
     text-decoration: none;
@@ -31,20 +32,13 @@
       line-height: $table-cell-height;
       content: "";
     }
-    i.fas.fa-chevron-right {
-      position: absolute;
-      right: 10px;
-      color: $bar-border;
-      line-height: $table-cell-height;
+    .cell-detail {
+      width: 100%;
     }
-    .switch-toggle {
-      float: right;
-      margin-top: 10px;
+    i.fas.fa-chevron-right {
+      color: $bar-border;
     }
     &.media {
-      display: flex;
-      align-items: center;
-
       img.media-object {
         align-self: flex-start;
         margin-top: 10px;
@@ -62,9 +56,6 @@
         p:last-of-type {
           margin-bottom: 0;
         }
-      }
-      i.fas.fa-chevron-right {
-
       }
     }
   }
