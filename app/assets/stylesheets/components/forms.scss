@@ -1,39 +1,29 @@
-form {
-  @extend .table-view;
+input[type=text], input[type=submit], input[type=password], input[type=search], input[type=email], textarea {
+  @extend .table-view-cell;
 
-  input[type=text], input[type=submit], input[type=password], input[type=search], input[type=email], textarea {
-    @extend .table-view-cell;
+  font-size: 16px;
+}
 
-    border: none;
-    font-size: 16px;
-    line-height: 1;
+.input-group {
+  display: table;
+  width: 100%;
+
+  .input-row {
+    display: table-row;
+    width: 100%;
+
+    label {
+      display: table-cell;
+      padding: 0 10px;
+      width: 1px;
+    }
+    input {
+      display: table-cell;
+      width: 100%;
+    }
   }
 }
 
-// <form>
-//   <input type="text" placeholder="Full name">
-//   <input type="search" placeholder="Search">
-//   <textarea rows="5"></textarea>
-//   <button class="btn btn-positive btn-block">Choose existing</button>
-// </form>
-//
-// <form class="input-group">
-//   <input type="text" placeholder="Full name">
-//   <input type="email" placeholder="Email">
-//   <input type="text" placeholder="Username">
-// </form>
-//
-// <form class="input-group">
-//   <div class="input-row">
-//     <label>Full name</label>
-//     <input type="text" placeholder="Mister Ratchet">
-//   </div>
-//   <div class="input-row">
-//     <label>Email</label>
-//     <input type="email" placeholder="ratchetframework@gmail.com">
-//   </div>
-//   <div class="input-row">
-//     <label>Username</label>
-//     <input type="text" placeholder="goRatchet">
-//   </div>
-// </form>
+.btn, button, input[type=button], input[type=reset], input[type=submit], input[type=image] {
+  color: $link-color;
+}

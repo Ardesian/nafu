@@ -114,29 +114,39 @@
 </div>
 
 <form>
-  <input type="text" placeholder="Full name">
-  <input type="search" placeholder="Search">
-  <textarea rows="5"></textarea>
-  <button class="btn btn-positive btn-block">Choose existing</button>
+  <div class="table-view">
+    <input type="text" placeholder="Full name">
+    <input type="text" placeholder="Search">
+  </div>
+
+  <div class="table-view">
+    <input type="text" placeholder="Title">
+    <textarea rows="5" placeholder="Notes"></textarea>
+    <button class="btn btn-positive btn-block">Choose existing</button>
+  </div>
 </form>
 
-<form class="input-group">
+<form class="table-view">
   <input type="text" placeholder="Full name">
   <input type="email" placeholder="Email">
   <input type="text" placeholder="Username">
 </form>
 
-<form class="input-group">
-  <div class="input-table-view">
-    <label>Full name</label>
-    <input type="text" placeholder="Mister Ratchet">
-  </div>
-  <div class="input-table-view">
-    <label>Email</label>
-    <input type="email" placeholder="ratchetframework@gmail.com">
-  </div>
-  <div class="input-table-view">
-    <label>Username</label>
-    <input type="text" placeholder="goRatchet">
+<form>
+  <div class="table-view">
+    <div class="input-group">
+      <div class="input-row">
+        <label>Full name</label>
+        <input type="text" placeholder="Mister Ratchet">
+      </div>
+      <div class="input-row">
+        <label>Email</label>
+        <input type="email" placeholder="ratchetframework@gmail.com">
+      </div>
+      <div class="input-row">
+        <label>Username</label>
+        <input type="text" placeholder="goRatchet">
+      </div>
+    </div>
   </div>
 </form>
