@@ -76,7 +76,7 @@ a { color: $link-color; }
       line-height: $table-cell-height;
       content: "";
     }
-    i.fas {
+    i.fas.fa-chevron-right {
       position: absolute;
       right: 10px;
       color: $bar-border;
@@ -85,6 +85,32 @@ a { color: $link-color; }
     .switch-toggle {
       float: right;
       margin-top: 10px;
+    }
+    &.media {
+      display: flex;
+      align-items: center;
+
+      img.media-object {
+        align-self: flex-start;
+        margin-top: 10px;
+        width: $table-cell-height;
+        height: $table-cell-height;
+      }
+      .media-body {
+        padding-left: 10px;
+      }
+      .table-detail {
+        margin: 10px 0;
+        line-height: normal;
+        white-space: normal;
+        
+        p:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+      i.fas.fa-chevron-right {
+
+      }
     }
   }
 }
