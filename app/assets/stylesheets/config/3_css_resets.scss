@@ -5,3 +5,15 @@ ul {
   padding: 0;
   list-style-type: none;
 }
+
+input[type=search] { appearance: textfield; }
+input[type=text], input[type=submit], input[type=password], input[type=email], textarea {
+  appearance: none;
+  margin: 0;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+  background-image: none;
+  padding: 0;
+  text-indent: 0;
+}
