@@ -29,8 +29,8 @@
       right: 0;
       left: 10px;
       vertical-align: middle;
-      border-top: 1px solid $bar-border;
-      height: $table-cell-height;
+      background: $bar-border;
+      height: 1px;
       content: "";
     }
     .cell-detail {

@@ -1,89 +1,3 @@
-<%= content_for(:header) do %>
-  <header class="bar bar-title">
-    <div class="title">NAFU</div>
-  </header>
-<% end %>
-
-<%= content_for(:footer) do %>
-  <nav class="bar bar-tab">
-    <a class="tab-item active" href="<%=  %>">
-      <i class="fas fa-home"></i>
-      <span class="tab-label">Home</span>
-    </a>
-    <a class="tab-item" href="<%= sup_path %>">
-      <i class="fas fa-user"></i>
-      <span class="tab-label">Profile</span>
-    </a>
-    <a class="tab-item" href="<%=  %>">
-      <i class="fas fa-star"></i>
-      <span class="tab-label">Favorites</span>
-    </a>
-    <a class="tab-item" href="<%=  %>">
-      <i class="fas fa-search"></i>
-      <span class="tab-label">Search</span>
-    </a>
-    <a class="tab-item" href="<%=  %>">
-      <i class="fas fa-cog"></i>
-      <span class="tab-label">Settings</span>
-    </a>
-  </nav>
-<% end %>
-
-<div class="table-view">
-  <form>
-    <div class="input-group">
-      <div class="input-row">
-        <label>Full name</label>
-        <input type="text" placeholder="Mister Ratchet">
-      </div>
-      <div class="input-row">
-        <label>Email</label>
-        <input type="email" placeholder="ratchetframework@gmail.com">
-      </div>
-      <div class="input-row">
-        <label>Username</label>
-        <input type="text" placeholder="goRatchet">
-      </div>
-    </div>
-  </form>
-</div>
-
-<form>
-  <div class="table-view">
-    <div class="input-row">
-      <input type="text" placeholder="Full name">
-    </div>
-    <div class="input-row">
-      <input type="text" placeholder="Search">
-    </div>
-  </div>
-
-  <div class="table-view">
-    <div class="input-row">
-      <input type="text" placeholder="Title">
-    </div>
-    <div class="input-row">
-      <textarea rows="5" placeholder="Notes"></textarea>
-    </div>
-    <div class="input-row">
-      <button class="btn btn-positive btn-block">Choose existing</button>
-    </div>
-  </div>
-</form>
-
-<form class="table-view">
-  <div class="input-row">
-    <input type="text" placeholder="Full name">
-  </div>
-  <div class="input-row">
-    <input type="email" placeholder="Email">
-  </div>
-  <div class="input-row">
-    <input type="text" placeholder="Username">
-  </div>
-</form>
-
-
 <div class="table-view">
   <a href="<%=  %>" class="table-view-cell">
     <div class="cell-detail">
@@ -165,5 +79,55 @@
     <div class="table-view-cell">Card Item 2</div>
     <div class="table-view-cell">Card Item 3</div>
     <div class="table-view-cell">Card Item 4</div>
+  </div>
+</div>
+
+<div class="table-view">
+  <div class="input-group">
+    <div class="input-row">
+      <label>Full name</label>
+      <input type="text" placeholder="Mister Ratchet">
+    </div>
+    <div class="input-row">
+      <label>Email</label>
+      <input type="email" placeholder="user@gmail.com">
+    </div>
+    <div class="input-row">
+      <label>Username</label>
+      <input type="text" placeholder="goRatchet">
+    </div>
+  </div>
+</div>
+
+<div class="table-view">
+  <div class="input-row">
+    <input type="text" placeholder="Full name">
+  </div>
+  <div class="input-row">
+    <input type="text" placeholder="Search">
+  </div>
+</div>
+
+<div class="table-view">
+  <div class="input-row">
+    <input type="text" placeholder="Title">
+  </div>
+  <div class="input-row">
+    <textarea rows="5" placeholder="Notes"></textarea>
+  </div>
+  <div class="input-row">
+    <button class="btn btn-positive btn-block">Choose existing</button>
+  </div>
+</div>
+
+<div class="table-view">
+  <div class="input-row">
+    <input type="text" placeholder="Full name">
+  </div>
+  <div class="input-row">
+    <input type="email" placeholder="Email">
+  </div>
+  <div class="input-row">
+    <input type="text" placeholder="Username">
   </div>
 </div>

@@ -6,9 +6,18 @@
   </head>
   <body>
 
-    <%= content_for(:header) %>
+    <% if !@hide_header %>
+      <header class="bar bar-title">
+        <%= content_for(:header_buttons) %>
+        <div class="title"><%= @title || "--" %></div>
+      </header>
+    <% end %>
+
     <div class="content"><%= yield %></div>
-    <%= content_for(:footer) %>
+
+    <% if !@hide_footer %>
+      <%= render partial: "layouts/footer_nav" %>
+    <% end %>
 
   </body>
 </html>

@@ -2,12 +2,9 @@
   @extend .table-view-cell;
 
   input[type=text], input[type=submit], input[type=password], input[type=search], input[type=email], textarea {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     padding: 0 10px;
+    width: 100%;
+    min-height: $table-cell-height;
     font-size: 16px;
   }
   textarea { padding: 10px; }
@@ -15,9 +12,7 @@
 
 .input-group {
   .input-row {
-    input {
-      left: 150px;
-    }
+    label { width: 150px; }
   }
 }
 
