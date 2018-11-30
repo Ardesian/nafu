@@ -1,1 +1,41 @@
+<%= content_for(:header) do %>
+  <header class="bar bar-title">
+    <button class="btn btn-link btn-nav pull-left">
+      <span class="icon icon-left-nav"></span>
+      Left
+    </button>
+    <button class="btn btn-link btn-nav pull-right">
+      Right
+      <span class="icon icon-right-nav"></span>
+    </button>
+
+    <div class="title">NAFU</div>
+  </header>
+<% end %>
+
+<%= content_for(:footer) do %>
+  <nav class="bar bar-tab">
+    <a class="tab-item active" href="#">
+      <i class="fas fa-home"></i>
+      <span class="tab-label">Home</span>
+    </a>
+    <a class="tab-item" href="<%= sup_path %>">
+      <i class="fas fa-user"></i>
+      <span class="tab-label">Profile</span>
+    </a>
+    <a class="tab-item" href="#">
+      <i class="fas fa-star"></i>
+      <span class="tab-label">Favorites</span>
+    </a>
+    <a class="tab-item" href="#">
+      <i class="fas fa-search"></i>
+      <span class="tab-label">Search</span>
+    </a>
+    <a class="tab-item" href="#">
+      <i class="fas fa-cog"></i>
+      <span class="tab-label">Settings</span>
+    </a>
+  </nav>
+<% end %>
+
 Boom
