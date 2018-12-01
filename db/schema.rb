@@ -15,8 +15,27 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "applications", force: :cascade do |t|
+  create_table "assignments", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "shift_id"
+    t.bigint "product_id"
+    t.bigint "tray_id"
+    t.bigint "duty_id"
+    t.integer "filled"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["duty_id"], name: "index_assignments_on_duty_id"
+    t.index ["product_id"], name: "index_assignments_on_product_id"
+    t.index ["shift_id"], name: "index_assignments_on_shift_id"
+    t.index ["tray_id"], name: "index_assignments_on_tray_id"
+    t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
+
+  create_table "candidates", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "encrypted_password", default: "", null: false
     t.string "fname"
     t.string "mname"
     t.string "lname"
@@ -35,7 +54,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
     t.datetime "approved_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_applications_on_user_id"
+    t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
   create_table "duties", force: :cascade do |t|
@@ -97,24 +116,6 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_shifts_on_user_id"
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "shift_id"
-    t.bigint "product_id"
-    t.bigint "tray_id"
-    t.bigint "duty_id"
-    t.integer "filled"
-    t.datetime "started_at"
-    t.datetime "ended_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["duty_id"], name: "index_tasks_on_duty_id"
-    t.index ["product_id"], name: "index_tasks_on_product_id"
-    t.index ["shift_id"], name: "index_tasks_on_shift_id"
-    t.index ["tray_id"], name: "index_tasks_on_tray_id"
-    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "trays", force: :cascade do |t|

@@ -6,6 +6,8 @@
   </head>
   <body>
 
+    <%= render 'layouts/flashes' %>
+
     <% if !@hide_header %>
       <header class="bar bar-title">
         <%= content_for(:header_buttons) %>

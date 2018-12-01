@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: tasks
+# Table name: assignments
 #
 #  id         :bigint(8)        not null, primary key
 #  user_id    :bigint(8)
@@ -15,7 +15,7 @@
 #  updated_at :datetime         not null
 #
 
-class Task < ApplicationRecord
+class Assignment < ApplicationRecord
   belongs_to :user,    required: true
   belongs_to :shift,   required: true
   belongs_to :product, required: true

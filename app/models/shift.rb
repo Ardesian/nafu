@@ -12,5 +12,5 @@
 
 class Shift < ApplicationRecord
   belongs_to :user, required: true
-  has_many :tasks
+  has_many :assignments
 end

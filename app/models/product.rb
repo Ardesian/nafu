@@ -11,6 +11,6 @@
 
 class Product < ApplicationRecord
   has_many :trays
-  has_many :tasks
+  has_many :assignments
   has_many :goals
 end

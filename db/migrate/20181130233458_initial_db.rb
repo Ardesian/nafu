@@ -27,8 +27,9 @@ class InitialDb < ActiveRecord::Migration[5.2]
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
 
-    create_table :applications do |t|
+    create_table :candidates do |t|
       t.belongs_to :user # optional (Required after approved)
+      t.string :encrypted_password, null: false, default: ""
       # Desired password?
       t.string :fname
       t.string :mname
@@ -98,7 +99,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    create_table :tasks do |t|
+    create_table :assignments do |t|
       t.belongs_to :user # required
       t.belongs_to :shift # required
       t.belongs_to :product # required
