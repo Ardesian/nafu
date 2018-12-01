@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class Devise::User::PasswordsController < Devise::PasswordsController
+  before_action { @hide_footer = true }
+  before_action { @title = "Password Reset" }
   # GET /resource/password/new
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource/password
   # def create
@@ -21,11 +23,11 @@ class Devise::User::PasswordsController < Devise::PasswordsController
   #   super
   # end
 
-  # protected
+  protected
 
-  # def after_resetting_password_path_for(resource)
-  #   super(resource)
-  # end
+  def after_resetting_password_path_for(resource)
+    account_path
+  end
 
   # The path used after sending reset password instructions
   # def after_sending_reset_password_instructions_path_for(resource_name)

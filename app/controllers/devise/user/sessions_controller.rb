@@ -7,6 +7,8 @@ class Devise::User::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   def new
     @title = "Welcome"
+    self.resource = resource_class.new(sign_in_params)
+    store_location_for(resource, params[:redirect_to])
     super
   end
 

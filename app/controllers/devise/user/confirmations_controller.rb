@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Devise::User::ConfirmationsController < Devise::ConfirmationsController
+  before_action { @hide_footer = true }
   # GET /resource/confirmation/new
   # def new
   #   super

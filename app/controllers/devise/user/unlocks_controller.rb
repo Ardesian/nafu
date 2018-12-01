@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Devise::User::UnlocksController < Devise::UnlocksController
+  before_action { @hide_footer = true }
   # GET /resource/unlock/new
   # def new
   #   super

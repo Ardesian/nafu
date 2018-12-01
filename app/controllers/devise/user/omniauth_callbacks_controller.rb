@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Devise::User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  before_action { @hide_footer = true }
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
 
