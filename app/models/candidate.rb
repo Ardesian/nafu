@@ -21,6 +21,7 @@
 #  education          :text
 #  references         :text
 #  approved_at        :datetime
+#  denied_at          :datetime
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
@@ -44,6 +45,10 @@ class Candidate < ApplicationRecord
     )
 
     return false unless user.persisted?
-    update(approved_at: Time.current, user: user)
+    update(approved_at: Time.current, user: user, denied_at: nil)
+  end
+
+  def deny!
+    update(denied_at: Time.current, approved_at: nil)
   end
 end

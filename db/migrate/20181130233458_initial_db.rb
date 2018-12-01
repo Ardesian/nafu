@@ -51,6 +51,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
       t.text :references
 
       t.datetime :approved_at
+      t.datetime :denied_at
 
       t.timestamps
     end

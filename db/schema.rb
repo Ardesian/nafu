@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
     t.text "education"
     t.text "references"
     t.datetime "approved_at"
+    t.datetime "denied_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_candidates_on_user_id"

@@ -19,3 +19,26 @@
 .btn, button, input[type=button], input[type=reset], input[type=submit], input[type=image] {
   color: $link-color;
 }
+
+.block {
+  margin: 10px;
+
+  .btn {
+    border-radius: 999px;
+    background: $link-color;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.auth-actions {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  a {
+    width: 100%;
+  }
+}
