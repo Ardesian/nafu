@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   resource :account, only: [ :show, :edit, :update ]
   resources :candidates, only: [ :new, :create ]
+  get :flash_message, controller: :application
 end

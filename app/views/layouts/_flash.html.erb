@@ -1,5 +1,5 @@
-<% inline ||= false %>
-<div class="flash-message notification is-<%= type == 'notice' ? 'success' : 'danger' %>">
-  <button class="delete"></button>
-  <%= message %>
+<div class="flash-banner flash-<%= type %>">
+  <div class="flash-container">
+    <%= message %>
+  </div>
 </div>
