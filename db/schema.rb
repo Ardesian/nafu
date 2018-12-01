@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
     t.string "fname"
     t.string "mname"
     t.string "lname"
-    t.integer "role"
+    t.integer "role", default: 10
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

@@ -33,4 +33,17 @@ class Candidate < ApplicationRecord
   def password=(new_password)
     self.encrypted_password = User.new(password: new_password).encrypted_password
   end
+
+  def approve!
+    user = User.create(
+      encrypted_password: encrypted_password,
+      email: email,
+      fname: fname,
+      mname: mname,
+      lname: lname,
+    )
+
+    return false unless user.persisted?
+    update(approved_at: Time.current, user: user)
+  end
 end

@@ -4,7 +4,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
       t.string :fname
       t.string :mname
       t.string :lname
-      t.integer :role
+      t.integer :role, default: User.roles[:trainee]
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
