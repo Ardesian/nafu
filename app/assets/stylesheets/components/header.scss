@@ -1,11 +1,25 @@
 .bar-title {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   .title {
     display: block;
     width: 100%;
     font-size: 24px;
     text-align: center;
+  }
+  .back-button, .forward-button {
+    padding: 0 10px;
+    width: 100px;
+    min-width: 100px;
+
+    a { text-decoration: none; }
+  }
+  .forward-button { text-align: right; }
+  .back-button a:before {
+    margin-right: 10px;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f053";
   }
 }

@@ -10,8 +10,9 @@
 
     <% if !@hide_header %>
       <header class="bar bar-title">
-        <%= content_for(:header_buttons) %>
+        <div class="back-button"><%= content_for(:back_button) %></div>
         <div class="title"><%= @title || "--" %></div>
+        <div class="forward-button"><%= content_for(:forward_button) %></div>
       </header>
     <% end %>
 
