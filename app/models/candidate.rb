@@ -31,6 +31,7 @@ class Candidate < ApplicationRecord
 
   def approved?; approved_at?; end
 
+  def password; end
   def password=(new_password)
     self.encrypted_password = User.new(password: new_password).encrypted_password
   end

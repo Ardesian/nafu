@@ -1,3 +1,96 @@
 <%= content_for(:back_button) do %>
   <a href="<%= new_user_session_path %>">Back</a>
 <% end %>
+
+<%= form_for @candidate do |f| %>
+  <%= render partial: "layouts/errors_container", locals: { resource: @candidate, error_title: "Failed to submit application. Please review your responses below and try again." } %>
+
+  <div class="table-label">Account</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.text_field :email, placeholder: "Email", autocomplete: :email %>
+    </div>
+
+    <div class="input-row">
+      <%= f.password_field :password, placeholder: "Password", autocomplete: :password %>
+    </div>
+  </div>
+
+  <div class="table-label">Personal Details</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.text_field :fname, placeholder: "First Name", autocomplete: :first_name %>
+    </div>
+
+    <div class="input-row">
+      <%= f.text_field :mname, placeholder: "Middle Name", autocomplete: :middle_name %>
+    </div>
+
+    <div class="input-row">
+      <%= f.text_field :lname, placeholder: "Last Name", autocomplete: :last_name %>
+    </div>
+
+    <div class="input-row">
+      <%= f.text_field :home_phone, placeholder: "Home Phone", autocomplete: :home_phone %>
+    </div>
+
+    <div class="input-row">
+      <%= f.text_field :cell_phone, placeholder: "Cell Phone", autocomplete: :cell_phone %>
+    </div>
+  </div>
+
+  <div class="table-label">Address</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.text_field :address1, placeholder: "Street Address", autocomplete: :address_line_1 %>
+    </div>
+
+    <div class="input-row">
+      <%= f.text_field :address2, placeholder: "Street Address 2", autocomplete: :address_line_2 %>
+    </div>
+
+    <div class="input-row">
+      <%= f.text_field :city, placeholder: "City", autocomplete: :city %>
+    </div>
+
+    <div class="input-row">
+      <%= f.text_field :state, placeholder: "State", autocomplete: :state %>
+    </div>
+
+    <div class="input-row">
+      <%= f.text_field :zip, placeholder: "Zip", autocomplete: :zip %>
+    </div>
+  </div>
+
+  <div class="table-label">History</div>
+  <div class="table-view">
+    <div class="table-view-cell">
+      <div class="cell-detail">
+        Are you a US citizen?
+      </div>
+      <%= slider("candidate[citizen]") %>
+    </div>
+
+    <div class="table-view-cell">
+      <div class="cell-detail">
+        Have you ever been convicted of a felony?
+      </div>
+      <%= slider("candidate[felony]") %>
+    </div>
+  </div>
+
+  <div class="table-label">History</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.text_field :education, placeholder: "Education", autocomplete: :education %>
+    </div>
+
+    <div class="input-row">
+      <%= f.text_field :references, placeholder: "References", autocomplete: :references %>
+    </div>
+  </div>
+
+  <div class="block">
+    <%= f.submit "Submit Application", class: "btn" %>
+  </div>
+<% end %>
