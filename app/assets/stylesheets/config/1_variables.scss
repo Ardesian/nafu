@@ -14,11 +14,12 @@ $table-cell-height: 50px;
 $flash-notice-bg: #009600;
 $flash-alert-bg: #B31500;
 
+$parsley-error-color: #FFD7DC;
 
 $zindex: (
   // loading-indicator: 1001,
   flash: 1000,
-  // popup: 999,
+  popup: 999,
   // tooltip: 2,
   // body: 1,
   // header: 0

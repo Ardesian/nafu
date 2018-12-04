@@ -34,6 +34,7 @@ gem "exception_notification"
 gem 'slack-notifier'
 gem 'mini_magick' # Used by active_storage
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'parsley-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
