@@ -45,7 +45,7 @@ class Candidate < ApplicationRecord
       lname: lname,
     )
 
-    return false unless user.persisted?
+    return user unless user.persisted?
     update(approved_at: Time.current, user: user, denied_at: nil)
   end
 

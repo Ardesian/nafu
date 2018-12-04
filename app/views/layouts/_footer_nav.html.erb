@@ -1,22 +1,26 @@
 <nav class="bar bar-tab">
-  <a class="tab-item active" href="<%=  %>">
-    <i class="fas fa-home"></i>
-    <span class="tab-label">Home</span>
-  </a>
+  <% if current_admin? %>
+    <a class="tab-item " href="<%=  %>">
+      <i class="fas fa-clock"></i>
+      <span class="tab-label">Shift Queue</span>
+    </a>
+  <% end %>
   <a class="tab-item" href="<%=  %>">
+    <i class="fas fa-calendar"></i>
+    <span class="tab-label">History</span>
+  </a>
+  <a class="tab-item " href="<%=  %>">
+    <i class="fas fa-star"></i>
+    <span class="tab-label">Start Shift</span>
+  </a>
+  <a class="tab-item active" href="<%=  %>">
     <i class="fas fa-user"></i>
     <span class="tab-label">Profile</span>
   </a>
-  <a class="tab-item" href="<%=  %>">
-    <i class="fas fa-star"></i>
-    <span class="tab-label">Favorites</span>
-  </a>
-  <a class="tab-item" href="<%=  %>">
-    <i class="fas fa-search"></i>
-    <span class="tab-label">Search</span>
-  </a>
-  <a class="tab-item" href="<%=  %>">
-    <i class="fas fa-cog"></i>
-    <span class="tab-label">Settings</span>
-  </a>
+  <% if current_admin? %>
+    <a class="tab-item" href="<%=  %>">
+      <i class="fas fa-lock"></i>
+      <span class="tab-label">Admin</span>
+    </a>
+  <% end %>
 </nav>

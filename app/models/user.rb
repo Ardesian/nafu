@@ -37,4 +37,8 @@ class User < ApplicationRecord
     shift_lead: 50,
     admin:      60
   }
+
+  def password_required?
+    encrypted_password.blank?
+  end
 end

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     unlocks: "devise/user/unlocks"
   }
 
-  resource :account, only: [ :show, :edit, :update ]
+  resource :account, controller: :account, only: [ :show, :edit, :update ]
   resources :candidates, only: [ :new, :create ]
   get :flash_message, controller: :application
 end
