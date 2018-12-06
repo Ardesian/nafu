@@ -1,24 +1,24 @@
 <nav class="bar bar-tab">
   <% if current_admin? %>
-    <a class="tab-item " href="<%=  %>">
+    <a class="tab-item <%= 'active' if is_controller?(:shift_queue) %>" href="<%=  %>">
       <i class="fas fa-clock"></i>
       <span class="tab-label">Shift Queue</span>
     </a>
   <% end %>
-  <a class="tab-item" href="<%=  %>">
+  <a class="tab-item <%= 'active' if is_controller?(:history) %>" href="<%=  %>">
     <i class="fas fa-calendar"></i>
     <span class="tab-label">History</span>
   </a>
-  <a class="tab-item " href="<%=  %>">
+  <a class="tab-item <%= 'active' if is_controller?(:shift) %>" href="<%=  %>">
     <i class="fas fa-star"></i>
     <span class="tab-label">Start Shift</span>
   </a>
-  <a class="tab-item active" href="<%=  %>">
+  <a class="tab-item <%= 'active' if is_controller?(:account) %>" href="<%= account_path %>">
     <i class="fas fa-user"></i>
     <span class="tab-label">Profile</span>
   </a>
   <% if current_admin? %>
-    <a class="tab-item" href="<%=  %>">
+    <a class="tab-item <%= 'active' if is_controller?(:admin) %>" href="<%=  %>">
       <i class="fas fa-lock"></i>
       <span class="tab-label">Admin</span>
     </a>

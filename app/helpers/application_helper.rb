@@ -1,4 +1,14 @@
 module ApplicationHelper
+  def current_admin?
+    current_user.try(:admin?)
+  end
+
+  def is_controller?(controller, action=nil)
+    return false unless params[:controller] == controller.to_s
+    return true if action.blank?
+    params[:action] == action.to_s
+  end
+
   def slider(name, opts={})
     id = opts.delete(:id) || name
     content_tag :label, class: "switch-toggle", for: id do
@@ -8,7 +18,7 @@ module ApplicationHelper
       "#{hidden}#{input}#{switch}".html_safe
     end
   end
-  
+
   def parsley(*parsley_values, **parsley_settings)
     parsley_settings[:error_message] ||= parsley_settings.delete(:message) if parsley_settings[:message].present?
     parsley_values << :errors_messages_disabled if parsley_values.delete(:no_message)
