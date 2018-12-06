@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   }
 
   resource :account, controller: :account, only: [ :show, :edit, :update ]
+  resources :shifts, only: [:new, :create, :index, :show]
   resources :candidates, only: [ :new, :create ]
+
   get :flash_message, controller: :application
 end

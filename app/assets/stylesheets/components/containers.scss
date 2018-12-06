@@ -1,0 +1,20 @@
+.container {
+  .med-img {
+    margin-bottom: 30px;
+    text-align: center;
+
+    img {
+      display: inline-block;
+      width: 200px;
+      height: auto;
+    }
+    .fas {
+      display: inline-block;
+      font-size: 150px;
+    }
+  }
+}
+
+.description {
+  text-align: center;
+}

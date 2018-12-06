@@ -1,5 +1,5 @@
-<div class="profile">
-  <div class="avatar">
+<div class="profile container">
+  <div class="avatar img-med">
     <% if @user.avatar.attached? %>
       <%= image_tag url_for(@user.avatar) %>
     <% else %>
