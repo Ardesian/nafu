@@ -14,6 +14,7 @@ candidate = Candidate.create(
   felony:     false,
   education:  "Sup",
   references: "Sup",
+  role:       :admin
 )
 user = candidate.approve!
 

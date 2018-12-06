@@ -1,5 +1,5 @@
 <nav class="bar bar-tab">
-  <% if current_admin? %>
+  <% if current_user.team_lead? %>
     <a class="tab-item <%= 'active' if is_controller?(:shift_queue) %>" href="<%=  %>">
       <i class="fas fa-clock"></i>
       <span class="tab-label">Shift Queue</span>
@@ -17,7 +17,7 @@
     <i class="fas fa-user"></i>
     <span class="tab-label">Profile</span>
   </a>
-  <% if current_admin? %>
+  <% if current_user.admin? %>
     <a class="tab-item <%= 'active' if is_controller?(:admin) %>" href="<%=  %>">
       <i class="fas fa-lock"></i>
       <span class="tab-label">Admin</span>

@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def current_admin?
-    current_user.try(:admin?)
-  end
-
   def is_controller?(controller, action=nil)
     return false unless params[:controller] == controller.to_s
     return true if action.blank?

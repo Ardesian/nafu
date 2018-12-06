@@ -24,6 +24,8 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :trackable, :validatable
 
+  include Moddable
+
   has_one :candidate
   has_one_attached :avatar
   # user.avatar.attach(params[:avatar])
@@ -36,15 +38,6 @@ class User < ApplicationRecord
   has_many :shifts
   has_many :written_notes, class_name: "Note", inverse_of: :author
   has_many :notes
-
-  enum role: {
-    trainee:    10,
-    competent:  20,
-    trainer:    30,
-    team_lead:  40,
-    shift_lead: 50,
-    admin:      60
-  }
 
   def phone; candidate.cell_phone; end
 
