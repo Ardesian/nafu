@@ -38,8 +38,11 @@
       height: 1px;
       content: "";
     }
-    .cell-detail {
+    .cell-body {
       width: 100%;
+    }
+    .cell-detail {
+      color: $bar-border;
     }
     i.fas.fa-chevron-right {
       color: $bar-border;

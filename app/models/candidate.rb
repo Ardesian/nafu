@@ -40,6 +40,7 @@ class Candidate < ApplicationRecord
     user = User.create(
       encrypted_password: encrypted_password,
       email: email,
+      phone: cell_phone,
       fname: fname,
       mname: mname,
       lname: lname,

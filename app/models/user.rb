@@ -6,6 +6,7 @@
 #  fname                  :string
 #  mname                  :string
 #  lname                  :string
+#  phone                  :string
 #  role                   :integer          default("trainee")
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
@@ -24,6 +25,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :trackable, :validatable
 
   has_one :candidate
+  has_one_attached :avatar
+  # user.avatar.attach(params[:avatar])
+  # user.avatar.attached?
+  # user.avatar.purge
+  # user.avatar.purge_later
+  # https://edgeguides.rubyonrails.org/active_storage_overview.html#transforming-images
+
   has_many :assignments
   has_many :shifts
   has_many :written_notes, class_name: "Note", inverse_of: :author
@@ -37,6 +45,8 @@ class User < ApplicationRecord
     shift_lead: 50,
     admin:      60
   }
+
+  def phone; candidate.cell_phone; end
 
   def password_required?
     encrypted_password.blank?
