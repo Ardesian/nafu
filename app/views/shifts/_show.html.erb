@@ -1,0 +1,9 @@
+<li class="table-view-cell media">
+  <a href="#approve" data-user-id="<%= user.id %>">
+    <img class="media-object pull-left" src="<%= image_url(user.avatar_url, host: root_domain) %>">
+    <div class="table-detail">
+      <h3><%= user.full_name %></h3>
+      <p>Click to approve shift</p>
+    </div>
+  </a>
+</li>

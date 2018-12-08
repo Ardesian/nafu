@@ -41,6 +41,10 @@ class User < ApplicationRecord
 
   def phone; candidate.cell_phone; end
 
+  def avatar_url
+    avatar.attached? ? avatar : "default-avatar.png"
+  end
+
   def full_name
     "#{fname} #{lname}"
   end

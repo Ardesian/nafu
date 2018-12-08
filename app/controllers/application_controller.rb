@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_notifications
-    @login_queue = Rails.cache.fetch("login_queue") { {} } if current_user.team_lead?
+    @login_queue = Rails.cache.fetch("login_queue") { {} } if current_user.try(:team_lead?)
   end
 
   def unauthenticate_user

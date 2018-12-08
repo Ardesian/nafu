@@ -1,5 +1,4 @@
 class ShiftsController < ApplicationController
-
   def new
     @title = "In Queue"
     @hide_footer = true
@@ -13,6 +12,7 @@ class ShiftsController < ApplicationController
   end
 
   def index
+    @title = "Shift Queue"
+    @users = User.where(id: @login_queue.keys)
   end
-
 end

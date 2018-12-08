@@ -1,4 +1,10 @@
 module ApplicationHelper
+  def root_domain
+    url_opts = ActionMailer::Base.default_url_options
+    port_str = url_opts[:host] == "localhost" ? ":#{url_opts[:port]}" : ""
+    "#{url_opts[:protocol] || 'http'}://#{url_opts[:host]}#{port_str}"
+  end
+
   def is_controller?(controller, action=nil)
     return false unless params[:controller] == controller.to_s
     return true if action.blank?

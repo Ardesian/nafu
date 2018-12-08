@@ -30,23 +30,24 @@ class ShiftsChannel < ApplicationCable::Channel
 
   def send_user_list
     remove_expired_users
-    pending_users = retrieve_user_list
+    queued_users = User.where(id: retrieve_user_list.keys)
 
-    # rendered_message = ChatController.render(partial: "chat/online_list", locals: { usernames: Rails.cache.fetch("mods_chatting") { {} } })
-    # ActionCable.server.broadcast "shifts:1", users: rendered_message
+    rendered_message = ShiftsController.render(partial: "shifts/index", assigns: { users: queued_users })
+    ActionCable.server.broadcast "login_queue", count: queued_users.count, html: rendered_message
   end
 
   def user_disconnected
     pending_users = retrieve_user_list
     pending_users.delete(current_user.id)
     write_user_list(pending_users)
+
+    send_user_list
   end
 
   def user_connected(send_list: true)
     pending_users = retrieve_user_list
     pending_users[current_user.id] = { last_ping: Time.current }
     write_user_list(pending_users)
-    binding.pry
 
     send_user_list if send_list
   end

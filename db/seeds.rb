@@ -35,4 +35,23 @@ candidate = Candidate.create(
   education:  "Sup",
   references: "Sup"
 )
+
+candidate.approve!
+candidate = Candidate.create(
+  password:   :password,
+  fname:      "Sup",
+  mname:      "AB",
+  lname:      "Sup",
+  email:      "sup@sup.com",
+  address1:   "123 Fake St",
+  city:       "That City",
+  state:      "UT",
+  zip:        "84123",
+  cell_phone: "123-456-7890",
+  home_phone: "123-456-7890",
+  citizen:    true,
+  felony:     false,
+  education:  "Sup",
+  references: "Sup"
+)
 candidate.approve!
