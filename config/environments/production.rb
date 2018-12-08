@@ -7,6 +7,8 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   config.action_mailer.default_url_options = { host: "jobs.naturesfusion.com", port: 6238 }
+  config.action_cable.url = "ws://localhost:6238/cable"
+  config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
 
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
   config.assets.js_compressor = :uglifier

@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   resources :candidates, only: [ :new, :create ]
 
   get :flash_message, controller: :application
+  
+  mount ActionCable.server => '/cable'
 end

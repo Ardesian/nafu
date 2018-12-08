@@ -18,6 +18,8 @@ module Nafu
     config.assets.quiet = true
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
+    config.action_cable.mount_path = '/cable'
+
     config.after_initialize do
       Rails.cache.write("login_queue", {})
       ActionCable.server.broadcast("login_queue", { ping: true })
