@@ -81,5 +81,4 @@ test:
 production:
   <<: *default
   database: nafu_production
-  username: nafu
-  password: <%= ENV['NATURE_DATABASE_PASSWORD'] %>
+  password: <%= ENV['NAFU_DATABASE_PASSWORD'] %>
