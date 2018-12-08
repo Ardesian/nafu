@@ -1,0 +1,17 @@
+i.badge {
+  &:before {
+    display: inline-block;
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    border-radius: 999px;
+    background: red;
+    padding: 3px 5px;
+    color: white;
+    font-style: normal;
+    line-height: 10px;
+    text-align: center;
+    content: attr(data-value);
+  }
+  &[data-value="0"] { display: none; }
+}

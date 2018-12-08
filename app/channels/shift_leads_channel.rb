@@ -1,4 +1,4 @@
-class LeadShiftsChannel < ApplicationCable::Channel
+class ShiftLeadsChannel < ApplicationCable::Channel
   def subscribed
     stream_from "login_queue"
   end

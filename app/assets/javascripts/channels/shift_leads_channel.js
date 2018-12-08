@@ -1,8 +1,10 @@
+console.log("Shift Lead");
 $(document).ready(function() {
-  App.lead_shifts = App.cable.subscriptions.create({
+  App.shift_leads = App.cable.subscriptions.create({
     channel: "LeadShiftsChannel"
   }, {
     connected: function() {
+      // login-queue
       // $.get("/chat_list").success(function(data) {
       //   updateBlip(data.count)
       // })

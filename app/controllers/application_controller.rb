@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :set_notifications
 
   def flash_message
     flash.now[params[:flash_type].to_sym] = params[:message].html_safe
@@ -6,6 +7,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_notifications
+    @login_queue = Rails.cache.fetch("login_queue") { {} } if current_user.team_lead?
+  end
 
   def unauthenticate_user
     if current_user.present?

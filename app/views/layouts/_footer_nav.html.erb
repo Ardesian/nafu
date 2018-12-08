@@ -1,6 +1,7 @@
 <nav class="bar bar-tab">
   <% if current_user.team_lead? %>
-    <a class="tab-item <%= 'active' if is_controller?(:shift_queue) %>" href="<%=  %>">
+    <a class="tab-item <%= 'active' if is_controller?(:shift_queue) %>" href="<%= shifts_path %>">
+      <i class="badge login-queue" data-value="<%= @login_queue.length %>"></i>
       <i class="fas fa-clock"></i>
       <span class="tab-label">Shift Queue</span>
     </a>

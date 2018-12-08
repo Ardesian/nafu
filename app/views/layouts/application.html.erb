@@ -5,6 +5,9 @@
     <%= render partial: "layouts/meta_tags" %>
   </head>
   <body>
+    <% if current_user.try(:team_lead?) %>
+      <%= javascript_include_tag "channels/shift_leads_channel.js" %>
+    <% end %>
 
     <%= render 'layouts/flashes' %>
 
