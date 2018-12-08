@@ -16,3 +16,5 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+//= stub channels/lead_shifts_channel.js
+//= stub channels/shifts_channel.js

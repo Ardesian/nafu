@@ -11,6 +11,7 @@
 #
 
 class Shift < ApplicationRecord
+  belongs_to :team_lead, required: true
   belongs_to :user, required: true
   has_many :assignments
 end

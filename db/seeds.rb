@@ -13,9 +13,26 @@ candidate = Candidate.create(
   citizen:    true,
   felony:     false,
   education:  "Sup",
-  references: "Sup",
-  role:       :admin
+  references: "Sup"
 )
-user = candidate.approve!
+candidate.approve!
+candidate.user.update(role: :admin)
 
-puts "#{user.to_json}".colorize(:cyan)
+candidate = Candidate.create(
+  password:   :password,
+  fname:      "Test",
+  mname:      "AB",
+  lname:      "User",
+  email:      "test@user.com",
+  address1:   "123 Fake St",
+  city:       "That City",
+  state:      "UT",
+  zip:        "84123",
+  cell_phone: "123-456-7890",
+  home_phone: "123-456-7890",
+  citizen:    true,
+  felony:     false,
+  education:  "Sup",
+  references: "Sup"
+)
+candidate.approve!

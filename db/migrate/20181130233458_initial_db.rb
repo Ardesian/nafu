@@ -115,6 +115,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
     end
 
     create_table :shifts do |t|
+      t.belongs_to :team_lead # required
       t.belongs_to :user # required
       t.datetime :started_at
       t.datetime :ended_at

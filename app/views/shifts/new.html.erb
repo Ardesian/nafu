@@ -1,5 +1,11 @@
+<%= javascript_include_tag "channels/shifts_channel.js" %>
+
+<%= content_for(:back_button) do %>
+  <%= link_to "Profile", account_path %>
+<% end %>
+
 <div class="container">
-  <div class="med-img">
+  <div class="img-med">
     <i class="fas fa-spinner fa-spin"></i>
   </div>
 

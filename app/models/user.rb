@@ -41,6 +41,10 @@ class User < ApplicationRecord
 
   def phone; candidate.cell_phone; end
 
+  def full_name
+    "#{fname} #{lname}"
+  end
+
   def password_required?
     encrypted_password.blank?
   end

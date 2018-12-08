@@ -9,6 +9,7 @@ class ShiftsController < ApplicationController
   end
 
   def show
+    # Verify correct user is actually in shift
   end
 
   def index
