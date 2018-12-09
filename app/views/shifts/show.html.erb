@@ -1,0 +1,34 @@
+<div class="table-view">
+  <div class="table-view-cell">
+    <div class="cell-body">Team Lead</div>
+    <div class="cell-info"><%= @shift.team_lead.full_name %></div>
+  </div>
+  <div class="table-view-cell">
+    <div class="cell-body">Date</div>
+    <div class="cell-info"><%= @shift.started_at&.strftime("%b %-d, %Y") || "N/A" %></div>
+  </div>
+  <div class="table-view-cell">
+    <div class="cell-body">Start Time</div>
+    <div class="cell-info"><%= @shift.started_at&.strftime("%-I:%M %p") || "N/A" %></div>
+  </div>
+  <div class="table-view-cell">
+    <div class="cell-body">End Time</div>
+    <div class="cell-info"><%= @shift.ended_at&.strftime("%-I:%M %p") || "N/A" %></div>
+  </div>
+</div>
+
+<div class="table-label">Tasks</div>
+<div class="table-view">
+  <% @shift.assignments.order(:created_at).each do |assignment| %>
+    <a href="<%= assignment_path(assignment) %>" class="table-view-cell">
+      <div class="cell-body">
+        <ul class="task-cell">
+          <li><%= assignment.project.name %></li>
+          <li><%= assignment.duty.name %> Tray#<%= assignment.tray_number %></li>
+          <li><%= assignment.product.name %> | <%= assignment.product_size.name %></li>
+          <li><%= assignment.filled %> in <%= assignment.duration %></li>
+        </ul>
+      </div>
+    </a>
+  <% end %>
+</div>

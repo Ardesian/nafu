@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
   resources :candidates, only: [ :new, :create ]
 
-  resources :assignments
+  resources :assignments, only: [:show, :create, :edit, :update]
 
   get :flash_message, controller: :application
 

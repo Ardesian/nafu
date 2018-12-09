@@ -4,7 +4,7 @@
 
 <%= form_for @assignment, data: parsley(:validate, trigger: :blur) do |f| %>
   <%= render partial: "layouts/errors_container", locals: { resource: @assignment, error_title: "Failed to begin task. Please verify that all fields are filled in correctly and try again." } %>
-  <%= f.hidden_field :shift_id, value: current_user.current_shift.try(:id) || @shift.try(:id) || @assignment.shift_id %>
+  <%= f.hidden_field :shift_id, value: @assignment.shift_id %>
 
   <div class="table-label">Station</div>
   <div class="table-view">
