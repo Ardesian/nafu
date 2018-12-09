@@ -32,7 +32,7 @@ class ShiftsChannel < ApplicationCable::Channel
     remove_expired_users
     queued_users = User.where(id: retrieve_user_list.keys)
 
-    rendered_message = ShiftsController.render(partial: "shifts/index", assigns: { users: queued_users })
+    rendered_message = ShiftsController.render(partial: "queue/index", assigns: { users: queued_users })
     ActionCable.server.broadcast "login_queue", count: queued_users.count, html: rendered_message
   end
 

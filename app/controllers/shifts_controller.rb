@@ -1,6 +1,5 @@
 class ShiftsController < ApplicationController
   before_action :authenticate_user
-  before_action :authenticate_team_lead, only: [:index]
   before_action :hide_footer, except: [:index]
 
   def new
@@ -28,10 +27,5 @@ class ShiftsController < ApplicationController
     current_user.current_shift.complete!
 
     redirect_to account_path
-  end
-
-  def index
-    @title = "Shift Queue"
-    @users = User.where(id: @login_queue.keys)
   end
 end
