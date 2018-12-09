@@ -12,3 +12,7 @@
     <div class="table-view-cell"><%= @user.role.titleize %></div>
   </div>
 </div>
+
+<p class="text-center">
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+</p>
