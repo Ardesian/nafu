@@ -2,13 +2,14 @@ Rails.application.configure do
 
   config.cache_classes = true
   config.eager_load = true
+  config.force_ssl = true
 
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  config.action_mailer.default_url_options = { host: "jobs.naturesfusion.com", port: 6238 }
-  config.action_cable.url = "ws://localhost:6238/cable"
-  config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
+  config.action_mailer.default_url_options = { host: "nafu.ardesian.com", port: 6238 }
+  config.action_cable.url = "wss://nafu.ardesian/cable"
+  config.action_cable.allowed_request_origins = [/https:\/\/*/]
 
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
   config.assets.js_compressor = :uglifier
