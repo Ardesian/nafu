@@ -8,6 +8,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def hide_title
+    @hide_title = true
+  end
+
+  def hide_footer
+    @hide_footer = true
+  end
+
   def set_notifications
     @login_queue = Rails.cache.fetch("login_queue") { {} } if current_user.try(:team_lead?)
   end

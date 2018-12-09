@@ -97,6 +97,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
 
     create_table :duties do |t|
       t.string :name
+      t.integer :expected_qty
 
       t.timestamps
     end

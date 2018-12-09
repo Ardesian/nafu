@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
 
   create_table "duties", force: :cascade do |t|
     t.string "name"
+    t.integer "expected_qty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,17 +1,19 @@
 class ShiftsController < ApplicationController
   before_action :authenticate_user
   before_action :authenticate_team_lead, only: [:index]
+  before_action :hide_footer, except: [:index]
 
   def new
     @title = "In Queue"
-    @hide_footer = true
+
   end
 
   def create
   end
 
   def show
-    # Verify correct user is actually in shift
+    @shift = current_user.shifts.find(params[:id])
+    @title = ""
   end
 
   def index
