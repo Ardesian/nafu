@@ -12,10 +12,13 @@
 #
 
 class Tray < ApplicationRecord
-  belongs_to :project, required: true
-  belongs_to :product, required: true
+  belongs_to :project,      required: true
+  belongs_to :product,      required: true
+  belongs_to :product_size, required: true
 
   has_many :assignments
-  has_many :notes
+  has_notes
+
+  validates :tray_number, presence: true
   # t.integer :tray_number # (special- unique per project/product)
 end

@@ -11,4 +11,6 @@
 
 class ProductSize < ApplicationRecord
   scope :available, -> { where(available: true) }
+
+  defaults available: true
 end

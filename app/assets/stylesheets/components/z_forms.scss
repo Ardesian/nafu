@@ -1,7 +1,7 @@
 .input-row {
   @extend .table-view-cell;
 
-  input[type=text], input[type=submit], input[type=password], input[type=search], input[type=email], textarea, select {
+  input[type=text], input[type=number], input[type=submit], input[type=password], input[type=search], input[type=email], textarea, select {
     padding: 0 10px;
     width: 100%;
     min-height: $table-cell-height;
@@ -24,6 +24,11 @@
       content: "\f078";
     }
   }
+}
+
+.input-row input.super-input {
+  font-size: 30px;
+  text-align: center;
 }
 
 .input-group {

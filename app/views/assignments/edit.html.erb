@@ -1,0 +1,21 @@
+<%= form_for @assignment, data: parsley(:validate, trigger: :blur) do |f| %>
+  <%= render partial: "layouts/errors_container", locals: { resource: @assignment, error_title: "Failed to begin task. Please verify that all fields are filled in correctly and try again." } %>
+
+  <div class="table-label">Quantity Completed</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.number_field :filled, value: @assignment.product.amount_per_tray, class: "super-input", data: parsley(:required) %>
+    </div>
+  </div>
+
+  <div class="table-label">Notes</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= notes_field(f) %>
+    </div>
+  </div>
+
+  <div class="block">
+    <%= f.submit "Complete Tray", class: "btn" %>
+  </div>
+<% end %>

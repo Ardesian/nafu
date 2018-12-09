@@ -14,4 +14,6 @@ class Duty < ApplicationRecord
   has_many :assignments
 
   scope :available, -> { where(available: true) }
+
+  defaults available: true
 end

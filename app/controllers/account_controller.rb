@@ -3,6 +3,7 @@ class AccountController < ApplicationController
   before_action :authenticate_user
 
   def show
+    redirect_to shift_path(current_user.current_shift) if current_user.current_shift.present?
     @user = current_user
   end
 

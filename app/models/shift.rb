@@ -15,4 +15,8 @@ class Shift < ApplicationRecord
   belongs_to :team_lead, class_name: "User", required: true
   belongs_to :user, required: true
   has_many :assignments
+
+  def complete!
+    update(ended_at: Time.current)
+  end
 end

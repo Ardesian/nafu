@@ -34,4 +34,8 @@ module ApplicationHelper
     end
     parsley_hash
   end
+
+  def notes_field(f)
+    "#{hidden_field_tag "#{f.object_name}[notes][author_id]", current_user.id}#{text_area_tag "#{f.object_name}[notes][body]"}".html_safe
+  end
 end

@@ -37,7 +37,7 @@ class User < ApplicationRecord
   has_many :assignments
   has_many :shifts
   has_many :written_notes, class_name: "Note", inverse_of: :author
-  has_many :notes
+  has_notes
 
   def phone; candidate.cell_phone; end
 
@@ -47,6 +47,10 @@ class User < ApplicationRecord
 
   def full_name
     "#{fname} #{lname}"
+  end
+
+  def current_shift
+    shifts.find_by(ended_at: nil)
   end
 
   def password_required?

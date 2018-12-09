@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   }
 
   resource :account, controller: :account, only: [ :show, :edit, :update ]
-  resources :shifts, only: [:new, :create, :index, :show]
+  resources :shifts, only: [:new, :create, :index, :show] do
+    post :complete, on: :collection
+  end
   resources :candidates, only: [ :new, :create ]
 
   resources :assignments

@@ -1,0 +1,36 @@
+<%= content_for(:forward_button) do %>
+  <%= link_to "End Shift", complete_shifts_path, method: :post %>
+<% end %>
+
+<%= form_for @assignment, data: parsley(:validate, trigger: :blur) do |f| %>
+  <%= render partial: "layouts/errors_container", locals: { resource: @assignment, error_title: "Failed to begin task. Please verify that all fields are filled in correctly and try again." } %>
+  <%= f.hidden_field :shift_id, value: @assignment.shift_id || @shift.id %>
+
+  <div class="table-label">Station</div>
+  <div class="table-view">
+    <div class="input-row select-wrapper">
+      <%= f.select :project_id, @projects.pluck(:name, :id), { include_blank: "Select Project" }, { data: parsley(:required) } %>
+    </div>
+    <div class="input-row select-wrapper">
+      <%= f.select :product_id, @products.pluck(:name, :id), { include_blank: "Select Product" }, { data: parsley(:required) } %>
+    </div>
+    <div class="input-row select-wrapper">
+      <%= f.select :product_size_id, @sizes.pluck(:name, :id), { include_blank: "Select Size" }, { data: parsley(:required) } %>
+    </div>
+    <div class="input-row select-wrapper">
+      <%= f.select :duty_id, @duties.pluck(:name, :id), { include_blank: "Select Job" }, { data: parsley(:required) } %>
+    </div>
+  </div>
+
+  <div class="table-label">Tray</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.text_field :tray_number, value: nil, placeholder: "#", class: "super-input", data: parsley(:required) %>
+    </div>
+  </div>
+
+  <div class="block">
+    <%= f.submit "Begin Task", class: "btn" %>
+  </div>
+
+<% end %>
