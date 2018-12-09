@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   resources :shifts, only: [:new, :create, :index, :show]
   resources :candidates, only: [ :new, :create ]
 
+  resources :assignments
+
   get :flash_message, controller: :application
-  
+
   mount ActionCable.server => '/cable'
 end

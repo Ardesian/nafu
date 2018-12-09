@@ -1,19 +1,24 @@
-<div class="table-view">
-  <div class="input-row select-wrapper">
-    <% @projects %>
-    <select class="" name="">
-      <option value="">Sup</option>
-      <option value="">Sup</option>
-      <option value="">Sup</option>
-      <option value="">Sup</option>
-      <option value="">Sup</option>
-      <option value="">Sup</option>
-    </select>
-  </div>
-</div>
+<%= form_for current_user.assignments.new, data: parsley(:validate, trigger: :blur) do |f| %>
 
-<p>Select project</p>
-<p>Select product</p>
+  <div class="table-label">Station</div>
+  <div class="table-view">
+    <div class="input-row select-wrapper">
+      <%= f.select :project, @projects.pluck(:name, :id), { include_blank: "Select Project" }, { data: parsley(:required) } %>
+    </div>
+    <div class="input-row select-wrapper">
+      <%= f.select :product, @products.pluck(:name, :id), { include_blank: "Select Product" }, { data: parsley(:required) } %>
+    </div>
+    <div class="input-row select-wrapper">
+      <%= f.select :size, @sizes.pluck(:name, :id), { include_blank: "Select Size" }, { data: parsley(:required) } %>
+    </div>
+    <div class="input-row select-wrapper">
+      <%= f.select :duty, @duties.pluck(:name, :id), { include_blank: "Select Job" }, { data: parsley(:required) } %>
+    </div>
+  </div>
+
+<% end %>
+
+
 <p>Select size</p>
 <p>Select tray</p>
 <p>Select duty</p>

@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
 
   create_table "assignments", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "project_id"
     t.bigint "shift_id"
     t.bigint "product_id"
+    t.bigint "product_size_id"
     t.bigint "tray_id"
     t.bigint "duty_id"
     t.integer "filled"
@@ -49,6 +51,8 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
     t.datetime "updated_at", null: false
     t.index ["duty_id"], name: "index_assignments_on_duty_id"
     t.index ["product_id"], name: "index_assignments_on_product_id"
+    t.index ["product_size_id"], name: "index_assignments_on_product_size_id"
+    t.index ["project_id"], name: "index_assignments_on_project_id"
     t.index ["shift_id"], name: "index_assignments_on_shift_id"
     t.index ["tray_id"], name: "index_assignments_on_tray_id"
     t.index ["user_id"], name: "index_assignments_on_user_id"
@@ -82,6 +86,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
   create_table "duties", force: :cascade do |t|
     t.string "name"
     t.integer "expected_qty"
+    t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -89,29 +94,32 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
   create_table "goals", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "product_id"
+    t.bigint "product_size_id"
     t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_goals_on_product_id"
+    t.index ["product_size_id"], name: "index_goals_on_product_size_id"
     t.index ["project_id"], name: "index_goals_on_project_id"
   end
 
   create_table "notes", force: :cascade do |t|
     t.bigint "author_id"
     t.bigint "tray_id"
-    t.bigint "task_id"
+    t.bigint "assignment_id"
     t.bigint "user_id"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["assignment_id"], name: "index_notes_on_assignment_id"
     t.index ["author_id"], name: "index_notes_on_author_id"
-    t.index ["task_id"], name: "index_notes_on_task_id"
     t.index ["tray_id"], name: "index_notes_on_tray_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "product_sizes", force: :cascade do |t|
     t.string "name"
+    t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -119,12 +127,13 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "amount_per_tray"
+    t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
     t.text "description"
     t.date "start_date"
     t.date "end_date"
@@ -146,10 +155,12 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
   create_table "trays", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "product_id"
+    t.bigint "product_size_id"
     t.integer "tray_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_trays_on_product_id"
+    t.index ["product_size_id"], name: "index_trays_on_product_size_id"
     t.index ["project_id"], name: "index_trays_on_project_id"
   end
 

@@ -58,7 +58,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
     end
 
     create_table :projects do |t|
-      t.string :title
+      t.string :name
       t.text :description
       t.date :start_date
       t.date :end_date
@@ -69,6 +69,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
     create_table :goals do |t|
       t.belongs_to :project # required
       t.belongs_to :product # required
+      t.belongs_to :product_size # required
       t.integer :amount
 
       t.timestamps
@@ -77,6 +78,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
     create_table :trays do |t|
       t.belongs_to :project # required
       t.belongs_to :product # required
+      t.belongs_to :product_size # required
       t.integer :tray_number # (special- unique per project/product)
 
       t.timestamps
@@ -85,12 +87,14 @@ class InitialDb < ActiveRecord::Migration[5.2]
     create_table :products do |t|
       t.string :name
       t.integer :amount_per_tray
+      t.boolean :available
 
       t.timestamps
     end
 
     create_table :product_sizes do |t|
       t.string :name
+      t.boolean :available
 
       t.timestamps
     end
@@ -98,14 +102,17 @@ class InitialDb < ActiveRecord::Migration[5.2]
     create_table :duties do |t|
       t.string :name
       t.integer :expected_qty
+      t.boolean :available
 
       t.timestamps
     end
 
     create_table :assignments do |t|
       t.belongs_to :user # required
+      t.belongs_to :project # required
       t.belongs_to :shift # required
       t.belongs_to :product # required
+      t.belongs_to :product_size # required
       t.belongs_to :tray # required
       t.belongs_to :duty # required
       t.integer :filled
@@ -127,7 +134,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
     create_table :notes do |t|
       t.belongs_to :author # required
       t.belongs_to :tray # optional - If any broke, tray is sticky, etc
-      t.belongs_to :task # optional - Broke X bottles
+      t.belongs_to :assignment # optional - Broke X bottles
       t.belongs_to :user # optional - Sucks at Filling
       t.text :body
 

@@ -15,6 +15,9 @@ class ShiftsController < ApplicationController
     @title = ""
 
     @projects = Project.current.order(end_date: :desc)
+    @products = Product.available.order(:name)
+    @sizes = ProductSize.available.order(:name)
+    @duties = Duty.available.order(:name)
   end
 
   def index
