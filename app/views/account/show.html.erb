@@ -5,8 +5,8 @@
 
   <div class="table-view">
     <div class="table-view-cell">
-      <div class="cell-body"><%= @user.fname %> <%= @user.lname %></div>
-      <div class="cell-detail">#<%= @user.id %></div>
+      <div class="cell-body"><%= @user.full_name %></div>
+      <div class="cell-info">#<%= @user.id %></div>
     </div>
     <div class="table-view-cell"><%= @user.phone %></div>
     <div class="table-view-cell"><%= @user.role.titleize %></div>

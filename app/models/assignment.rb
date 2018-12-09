@@ -43,6 +43,5 @@ class Assignment < ApplicationRecord
 
   def find_or_create_tray
     tray_number = @temp_tray_number if tray_id.blank?
-    # update(tray_number: @temp_tray_number)
   end
 end

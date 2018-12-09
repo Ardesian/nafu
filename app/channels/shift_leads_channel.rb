@@ -11,7 +11,7 @@ class ShiftLeadsChannel < ApplicationCable::Channel
     return unless current_user.team_lead?
     data.deep_symbolize_keys!
     shift = User.find(data[:uid]).shifts.create(started_at: Time.current, team_lead: current_user)
-    shift_url = Rails.application.routes.url_helpers.shift_path(shift)
+    shift_url = Rails.application.routes.url_helpers.current_shifts_path
     ShiftsChannel.broadcast_to(shift.user, shift_url: shift_url)
   end
 

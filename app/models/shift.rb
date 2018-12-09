@@ -16,6 +16,10 @@ class Shift < ApplicationRecord
   belongs_to :user, required: true
   has_many :assignments
 
+  def title
+    created_at.strftime("%b %-d, %Y - %-I:%M %p")
+  end
+
   def complete!
     update(ended_at: Time.current)
   end

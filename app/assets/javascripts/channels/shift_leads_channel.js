@@ -2,8 +2,7 @@ $(document).ready(function() {
   App.shift_leads = App.cable.subscriptions.create({
     channel: "ShiftLeadsChannel"
   }, {
-    connected: function() {
-    },
+    connected: function() {},
     received: function(data) {
       $(".badge.login-queue").attr("data-value", data.count)
 
@@ -32,6 +31,7 @@ $(document).ready(function() {
   })
 
   $(document).on("click", ".approve-user", function(evt) {
+    console.log("click");
     evt.preventDefault()
     App.shift_leads.approve($(this).attr("data-user-id"))
     $(this).closest(".table-view-cell").remove()

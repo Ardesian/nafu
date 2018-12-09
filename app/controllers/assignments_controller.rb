@@ -21,7 +21,7 @@ class AssignmentsController < ApplicationController
     @assignment = current_user.assignments.find(params[:id])
 
     if @assignment.update(assignment_params.merge(ended_at: Time.current))
-      redirect_to @assignment.shift
+      redirect_to current_shifts_path
     else
       @title = "Task Details"
       render :edit

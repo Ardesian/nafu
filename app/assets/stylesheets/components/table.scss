@@ -42,46 +42,36 @@
     .cell-body {
       width: 100%;
     }
-    .cell-detail {
+    .cell-info {
       color: $bar-border;
     }
     i.fas.fa-chevron-right {
       color: $bar-border;
     }
-    &.media {
-      a {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        color: black;
-        text-decoration: none;
+    img.media-object {
+      align-self: flex-start;
+      margin-top: 10px;
+      margin-right: 10px;
+      width: $table-cell-height;
+      height: auto;
+    }
+    h3 {
+      margin: 0;
+    }
+    .cell-detail {
+      margin: 10px 0;
+      width: 100%;
+      white-space: normal;
 
-        img.media-object {
-          align-self: flex-start;
-          margin-top: 10px;
-          margin-right: 10px;
-          width: $table-cell-height;
-          height: auto;
-        }
-        h3 {
-          margin: 0;
-        }
-        .table-detail {
-          margin: 10px 0;
-          width: 100%;
-          white-space: normal;
-
-          p:last-of-type {
-            margin-bottom: 0;
-          }
-        }
-        &:after {
-          margin-right: 10px;
-          font-family: "Font Awesome\ 5 Free";
-          content: "\f054";
-        }
+      p:last-of-type {
+        margin-bottom: 0;
       }
     }
+  }
+  a.table-view-cell:after {
+    margin-right: 10px;
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f054";
   }
 }
 
