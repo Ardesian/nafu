@@ -5,7 +5,6 @@ class ShiftsController < ApplicationController
 
   def new
     @title = "In Queue"
-
   end
 
   def create
@@ -14,6 +13,8 @@ class ShiftsController < ApplicationController
   def show
     @shift = current_user.shifts.find(params[:id])
     @title = ""
+
+    @projects = Project.current.order(end_date: :desc)
   end
 
   def index

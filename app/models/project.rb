@@ -15,4 +15,10 @@ class Project < ApplicationRecord
   has_many :trays
   has_many :tasks
   has_many :goals
+
+  scope :current, ->(now=Time.current) { where("projects.start_date > :now AND projects.end_date < :now", now: now.to_date) }
+
+  def current_progress
+
+  end
 end
