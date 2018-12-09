@@ -132,11 +132,13 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
   end
 
   create_table "shifts", force: :cascade do |t|
+    t.bigint "team_lead_id"
     t.bigint "user_id"
     t.datetime "started_at"
     t.datetime "ended_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["team_lead_id"], name: "index_shifts_on_team_lead_id"
     t.index ["user_id"], name: "index_shifts_on_user_id"
   end
 

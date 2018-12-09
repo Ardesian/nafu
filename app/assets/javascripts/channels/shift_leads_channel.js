@@ -23,6 +23,18 @@ $(document).ready(function() {
         var cell = $(this), id = cell.find("a[data-user-id]").attr("data-user-id")
         if (ids.indexOf(id) == -1) { cell.remove() }
       })
+    },
+    approve: function(uid) {
+      return this.perform("approve", {
+        uid: uid
+      })
     }
+  })
+
+  $(document).on("click", ".approve-user", function(evt) {
+    evt.preventDefault()
+    App.shift_leads.approve($(this).attr("data-user-id"))
+    $(this).closest(".table-view-cell").remove()
+    return false
   })
 })

@@ -25,6 +25,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_team_lead
+    unless current_user.try(:team_lead?)
+      session[:forwarding_url] = request.original_url if request.get?
+      redirect_to new_user_session_path, notice: "You do not have permission to visit this page."
+    end
+  end
+
   def authenticate_admin
     unless current_user.try(:admin?)
       session[:forwarding_url] = request.original_url if request.get?

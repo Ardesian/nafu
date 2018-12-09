@@ -6,7 +6,9 @@ $(document).ready(function() {
       console.log("Connected");
     },
     received: function(data) {
-      console.log("Received:", data);
+      if (data.shift_url) {
+        window.location.href = data.shift_url
+      }
     }
   })
 })
