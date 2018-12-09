@@ -8,7 +8,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   config.action_mailer.default_url_options = { host: "nafu.ardesian.com", port: 6238 }
-  config.action_cable.url = "wss://nafu.ardesian/cable"
+  config.action_cable.url = "wss://nafu.ardesian.com/cable"
   config.action_cable.allowed_request_origins = [/https:\/\/*/]
 
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
