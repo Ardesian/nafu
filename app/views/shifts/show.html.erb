@@ -20,7 +20,7 @@
 <div class="table-label">Tasks</div>
 <div class="table-view">
   <% @shift.assignments.order(:created_at).each do |assignment| %>
-    <a href="<%= assignment_path(assignment) %>" class="table-view-cell">
+    <div class="table-view-cell">
       <div class="cell-body">
         <ul class="task-cell">
           <li><%= assignment.project.name %></li>
@@ -29,6 +29,6 @@
           <li><%= assignment.filled %> in <%= assignment.duration %></li>
         </ul>
       </div>
-    </a>
+    </div>
   <% end %>
 </div>

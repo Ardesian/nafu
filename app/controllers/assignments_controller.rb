@@ -1,10 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :authenticate_user
 
-  def show
-    @assignment = current_user.assignments.find(params[:id])
-  end
-
   def create
     @assignment = current_user.assignments.create(assignment_params.merge(started_at: Time.current))
 
