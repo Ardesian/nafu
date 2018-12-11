@@ -1,0 +1,14 @@
+.pull-refresh-container {
+  position: fixed;
+  top: -50px;
+  right: 0;
+  left: 0;
+  background: yellow;
+  height: 50px;
+  text-align: center;
+
+  i.fas {
+    font-size: 30px;
+    line-height: 50px;
+  }
+}

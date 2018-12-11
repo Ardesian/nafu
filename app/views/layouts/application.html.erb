@@ -9,21 +9,22 @@
       <%= javascript_include_tag "channels/shift_leads_channel.js" %>
     <% end %>
 
-    <%= render 'layouts/flashes' %>
+    <div class="page-wrapper">
+      <%= render 'layouts/flashes' %>
 
-    <% if !@hide_header %>
-      <header class="bar bar-title">
-        <div class="back-button"><%= content_for(:back_button) %></div>
-        <div class="title"><%= @title || "--" %></div>
-        <div class="forward-button"><%= content_for(:forward_button) %></div>
-      </header>
-    <% end %>
+      <% if !@hide_header %>
+        <header class="bar bar-title">
+          <div class="back-button"><%= content_for(:back_button) %></div>
+          <div class="title"><%= @title || "--" %></div>
+          <div class="forward-button"><%= content_for(:forward_button) %></div>
+        </header>
+      <% end %>
 
-    <div class="content"><%= yield %></div>
+      <div class="content"><%= yield %></div>
 
-    <% if !@hide_footer %>
-      <%= render partial: "layouts/footer_nav" %>
-    <% end %>
-
+      <% if !@hide_footer %>
+        <%= render partial: "layouts/footer_nav" %>
+      <% end %>
+    </div>
   </body>
 </html>
