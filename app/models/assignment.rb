@@ -30,6 +30,7 @@ class Assignment < ApplicationRecord
 
   attr_accessor :temp_tray_number
   before_validation :find_or_create_tray
+  after_commit :update_goals
 
   def tray_number; tray.try(:tray_number); end
   def tray_number=(new_tray_number)
@@ -71,6 +72,10 @@ class Assignment < ApplicationRecord
   end
 
   private
+
+  def update_goals
+    project.goals.where(product_id: product_id, product_size_id: product_size_id).find_each(&:update_current_amount)
+  end
 
   def find_or_create_tray
     tray_number = @temp_tray_number if tray_id.blank?

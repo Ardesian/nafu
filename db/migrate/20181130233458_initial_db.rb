@@ -70,7 +70,8 @@ class InitialDb < ActiveRecord::Migration[5.2]
       t.belongs_to :project # required
       t.belongs_to :product # required
       t.belongs_to :product_size # required
-      t.integer :amount
+      t.integer :current_amount
+      t.integer :desired_amount
 
       t.timestamps
     end

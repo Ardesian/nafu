@@ -18,7 +18,15 @@ class Project < ApplicationRecord
 
   scope :current, ->(now=Time.current) { where("projects.start_date < :now AND (projects.end_date > :now OR projects.end_date IS NULL)", now: now.to_date) }
 
-  def current_progress
+  def progress_percentage
+    (current_bottles.to_i / goal_bottles.to_f) * 100
+  end
 
+  def current_bottles
+    goals.sum(:current_amount)
+  end
+
+  def goal_bottles
+    goals.sum(:desired_amount)
   end
 end

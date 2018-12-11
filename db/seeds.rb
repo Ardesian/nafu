@@ -57,7 +57,7 @@ candidate = Candidate.create(
 candidate.approve!
 
 product_names = ["Alert (Orange)", "Breathe (Green)", "Crave (Yellow)", "Harmony (Blue)", "Serene (Purple)", "Travel (Pink)"]
-products = product_names.map { |product| Product.create(name: product) }
+products = product_names.map { |product| Product.create(name: product, amount_per_tray: 196) }
 
 size_labels = ["5ml", "10ml", "15ml", "30ml", "Amber Bottle", "Blue Bottle", "Green Bottle"]
 sizes = size_labels.map { |label| ProductSize.create(name: label) }
@@ -76,5 +76,7 @@ project = Project.create(
   end_date: 1.week.from_now,
 )
 products.sample(5).each do |product|
-  project.goals.create(project: project, product: product, amount: rand(10) + 5)
+  size = sizes.sample
+  puts "DEBUG: #{project.name}:#{product.name}:#{size.name}".colorize(:red)
+  project.goals.create(project: project, product: product, product_size: size, desired_amount: (rand(10) + 5) * 1000)
 end

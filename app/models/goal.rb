@@ -6,14 +6,16 @@
 #  project_id      :bigint(8)
 #  product_id      :bigint(8)
 #  product_size_id :bigint(8)
-#  amount          :integer
+#  current_amount  :integer
+#  desired_amount  :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
 
 class Goal < ApplicationRecord
-  belongs_to :project, required: true
-  belongs_to :product, required: true
+  belongs_to :project,      required: true
+  belongs_to :product,      required: true
+  belongs_to :product_size, required: true
 
   def product=(name)
     if name.is_a?(String)
@@ -21,5 +23,13 @@ class Goal < ApplicationRecord
     else
       super(name)
     end
+  end
+
+  def progress_percentage
+    (current_amount.to_i / desired_amount.to_f) * 100
+  end
+
+  def update_current_amount
+    update(current_amount: project.assignments.where(product_id: product_id, product_size_id: product_size_id).sum(:filled))
   end
 end

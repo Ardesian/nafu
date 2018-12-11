@@ -95,7 +95,8 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
     t.bigint "project_id"
     t.bigint "product_id"
     t.bigint "product_size_id"
-    t.integer "amount"
+    t.integer "current_amount"
+    t.integer "desired_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_goals_on_product_id"
