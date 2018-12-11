@@ -26,6 +26,7 @@ class Goal < ApplicationRecord
   end
 
   def progress_percentage
+    return unless desired_amount.positive?
     (current_amount.to_i / desired_amount.to_f) * 100
   end
 
