@@ -29,6 +29,8 @@
 class Candidate < ApplicationRecord
   belongs_to :user, optional: true # (Required after approved)
 
+  scope :pending, -> { where(approved_at: nil, denied_at: nil) }
+
   def approved?; approved_at?; end
 
   def password; end

@@ -22,6 +22,17 @@ Rails.application.routes.draw do
 
   resources :assignments, only: [:show, :create, :edit, :update]
 
+  resource :admin, controller: :admin, only: [:show]
+  namespace :admin do
+    resources :candidates,    except: [:new, :create, :destroy]
+    resources :users,         except: [:new, :create, :destroy]
+    resources :shifts,        except: [:new, :create, :destroy]
+    resources :assignments,   except: [:new, :create, :destroy]
+    resources :products,      except: [:new, :create, :destroy]
+    resources :product_sizes, except: [:new, :create, :destroy]
+    resources :projects,      except: [:new, :create, :destroy]
+  end
+
   get :flash_message, controller: :application
 
   mount ActionCable.server => '/cable'
