@@ -121,13 +121,13 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
   create_table "product_sizes", force: :cascade do |t|
     t.string "name"
     t.boolean "available"
+    t.integer "amount_per_tray"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.integer "amount_per_tray"
     t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

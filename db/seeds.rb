@@ -57,10 +57,10 @@ candidate = Candidate.create(
 candidate.approve!
 
 product_names = ["Alert (Orange)", "Breathe (Green)", "Crave (Yellow)", "Harmony (Blue)", "Serene (Purple)", "Travel (Pink)"]
-products = product_names.map { |product| Product.create(name: product, amount_per_tray: 196) }
+products = product_names.map { |product| Product.create(name: product) }
 
 size_labels = ["5ml", "10ml", "15ml", "30ml", "Amber Bottle", "Blue Bottle", "Green Bottle"]
-sizes = size_labels.map { |label| ProductSize.create(name: label) }
+sizes = size_labels.map { |label| ProductSize.create(name: label, amount_per_tray: 196) }
 
 duty_names = ["Prep", "Insert", "Hammer", "Cap", "Drill", "QC Caps"]
 duties = duty_names.map { |duty| Duty.create(name: duty) }

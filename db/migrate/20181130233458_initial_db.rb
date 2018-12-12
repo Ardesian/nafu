@@ -87,7 +87,6 @@ class InitialDb < ActiveRecord::Migration[5.2]
 
     create_table :products do |t|
       t.string :name
-      t.integer :amount_per_tray
       t.boolean :available
 
       t.timestamps
@@ -96,6 +95,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
     create_table :product_sizes do |t|
       t.string :name
       t.boolean :available
+      t.integer :amount_per_tray
 
       t.timestamps
     end

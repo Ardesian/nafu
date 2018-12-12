@@ -1,24 +1,42 @@
 class ::Admin::ProductsController < ::Admin::BaseController
+  before_action :setup
+  before_action { @title = "Products" }
 
   def index
-    Product.order(:available, created_at: :desc)
+    @title = "Products"
+    @projects = Product.current.order(created_at: :desc)
   end
 
-  def show
-    @resource = @resource_type.find(params[:id])
+  def new
+    @project = Product.new
+
+    render :form
   end
 
   def edit
-    @resource = @resource_type.find(params[:id])
+    render :form
   end
 
   def update
-    @resource = @resource_type.find(params[:id])
-
-    if @resource.update(resource_params)
-      redirect_to :admin, @resource
+    if @project.update(project_params)
+      redirect_to [:admin, @project]
     else
-      redirect_to :admin, :edit, @resource
+      render :form
     end
+  end
+
+  private
+
+  def setup
+    @project = Product.find(params[:id]) if params[:id].present?
+  end
+
+  def project_params
+    params.require(:project).permit(
+      :name,
+      :description,
+      :start_date,
+      :end_date
+    )
   end
 end
