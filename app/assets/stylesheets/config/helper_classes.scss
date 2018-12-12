@@ -3,6 +3,7 @@
 .text-normal { font-weight: normal; }
 .text-bold { font-weight: bold; }
 .underline { text-decoration: underline; }
+.danger { color: $error-red; }
 
 .no-list { list-style-type: none; }
 .no-margin { margin: 0; }

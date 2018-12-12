@@ -17,11 +17,29 @@ class ::Admin::ProjectsController < ::Admin::BaseController
     render :form
   end
 
+  def create
+    @project = Project.new(project_params)
+
+    if @project.save
+      redirect_to [:admin, @project]
+    else
+      render :form
+    end
+  end
+
   def update
     if @project.update(project_params)
       redirect_to [:admin, @project]
     else
       render :form
+    end
+  end
+
+  def destroy
+    if @project.destroy
+      render :form
+    else
+      redirect_to admin_products_path
     end
   end
 

@@ -17,6 +17,16 @@ class ::Admin::ProductsController < ::Admin::BaseController
     render :form
   end
 
+  def create
+    @product = Product.new(product_params)
+
+    if @product.save
+      redirect_to [:admin, :products]
+    else
+      render :form
+    end
+  end
+
   def update
     if @product.update(product_params)
       redirect_to [:admin, :products]

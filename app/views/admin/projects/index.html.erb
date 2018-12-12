@@ -1,6 +1,11 @@
 <%= content_for(:back_button) do %>
   <a href="<%= admin_path %>">Back</a>
 <% end %>
+<%= content_for(:forward_button) do %>
+  <a href="<%= new_admin_project_path %>">
+    <i class="fas fa-plus"></i>
+  </a>
+<% end %>
 
 <div class="table-view">
   <% @projects.each do |project| %>

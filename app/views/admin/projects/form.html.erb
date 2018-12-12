@@ -41,3 +41,9 @@
     <%= f.submit nil, class: "btn" %>
   </div>
 <% end %>
+
+<% if @project.persisted? && @project.assignments.none? %>
+  <p class="text-center">
+    <%= link_to "Delete Project", admin_project_path(@project), class: "danger", method: :delete, data: { confirm: "Are you sure you want to destroy this project?\nThis is permanent and cannot be undone." } %>
+  </p>
+<% end %>
