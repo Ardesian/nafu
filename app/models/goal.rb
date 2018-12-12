@@ -17,6 +17,8 @@ class Goal < ApplicationRecord
   belongs_to :product,      required: true
   belongs_to :product_size, required: true
 
+  after_create :update_current_amount
+
   def product=(name)
     if name.is_a?(String)
       super(Product.find_by(name: name))

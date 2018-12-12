@@ -16,7 +16,7 @@ class Project < ApplicationRecord
   has_many :goals
   has_many :assignments
 
-  scope :current, ->(now=Time.current) { where("projects.start_date < :now AND (projects.end_date > :now OR projects.end_date IS NULL)", now: now.to_date) }
+  scope :current, ->(now=Time.current) { where("(projects.start_date < :now OR projects.start_date IS NULL) AND (projects.end_date > :now OR projects.end_date IS NULL)", now: now.to_date) }
 
   def progress_percentage
     return unless goal_bottles.positive?

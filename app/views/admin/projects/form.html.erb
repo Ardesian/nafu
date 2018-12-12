@@ -1,24 +1,39 @@
 <%= content_for(:back_button) do %>
-  <a href="<%= admin_project_path(@project) %>">Back</a>
+  <% if @project.persisted? %>
+    <a href="<%= admin_project_path(@project) %>">Back</a>
+  <% else %>
+    <a href="<%= admin_projects_path %>">Back</a>
+  <% end %>
 <% end %>
 
-<%= form_for [:admin, @project, @goal], data: parsley(:validate, trigger: :blur) do |f| %>
-  <%= render partial: "layouts/errors_container", locals: { resource: @goal } %>
+<%= form_for [:admin, @project], data: parsley(:validate, trigger: :blur) do |f| %>
+  <%= render partial: "layouts/errors_container", locals: { resource: @project } %>
 
-  <div class="table-label">Product</div>
+  <div class="table-label">Name</div>
   <div class="table-view">
-    <div class="input-row select-wrapper">
-      <%= f.select :product_id, @products.pluck(:name, :id), { include_blank: "Select Product" }, { data: parsley(:required) } %>
-    </div>
-    <div class="input-row select-wrapper">
-      <%= f.select :product_size_id, @sizes.pluck(:name, :id), { include_blank: "Select Size" }, { data: parsley(:required) } %>
+    <div class="input-row">
+      <%= f.text_field :name, { data: parsley(:required) } %>
     </div>
   </div>
 
-  <div class="table-label">Goal Amount</div>
+  <div class="table-label">Description</div>
   <div class="table-view">
     <div class="input-row">
-      <%= f.number_field :desired_amount, { data: parsley(:required) } %>
+      <%= f.text_area :description %>
+    </div>
+  </div>
+
+  <div class="table-label">Start Date</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.text_field :start_date, value: @project.start_date.try(:rfc2822)&.split(" 00").try(:first), class: :datepicker %>
+    </div>
+  </div>
+
+  <div class="table-label">End Date</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.text_field :end_date, value: @project.end_date.try(:rfc2822)&.split(" 00").try(:first), class: :datepicker %>
     </div>
   </div>
 

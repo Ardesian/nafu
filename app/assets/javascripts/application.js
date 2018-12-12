@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/widgets/datepicker
 //= require parsley
 //= require rails-ujs
 //= require activestorage

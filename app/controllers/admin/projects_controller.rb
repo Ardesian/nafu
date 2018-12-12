@@ -7,15 +7,21 @@ class ::Admin::ProjectsController < ::Admin::BaseController
     @projects = Project.current.order(created_at: :desc)
   end
 
+  def new
+    @project = Project.new
+
+    render :form
+  end
+
   def edit
-    
+    render :form
   end
 
   def update
     if @project.update(project_params)
-      redirect_to :admin, @project
+      redirect_to [:admin, @project]
     else
-      redirect_to :admin, :edit, @project
+      render :form
     end
   end
 
@@ -28,7 +34,9 @@ class ::Admin::ProjectsController < ::Admin::BaseController
   def project_params
     params.require(:project).permit(
       :name,
-      goal_attributes: []
+      :description,
+      :start_date,
+      :end_date
     )
   end
 end

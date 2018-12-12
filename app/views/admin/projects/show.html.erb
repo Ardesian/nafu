@@ -1,3 +1,7 @@
+<%= content_for(:back_button) do %>
+  <a href="<%= admin_projects_path %>">Back</a>
+<% end %>
+
 <div class="table-view">
   <a href="<%= edit_admin_project_path(@project) %>" class="table-view-cell">
     <%= render partial: "title_cell", locals: { project: @project } %>

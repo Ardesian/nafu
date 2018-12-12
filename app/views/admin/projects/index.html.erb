@@ -1,3 +1,7 @@
+<%= content_for(:back_button) do %>
+  <a href="<%= admin_path %>">Back</a>
+<% end %>
+
 <div class="table-view">
   <% @projects.each do |project| %>
     <a href="<%= admin_project_path(project) %>" class="table-view-cell">
