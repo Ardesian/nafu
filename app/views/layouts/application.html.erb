@@ -10,7 +10,8 @@
     <% end %>
 
     <div class="page-wrapper">
-      <%= render 'layouts/flashes' %>
+      <%= render partial: 'layouts/flashes' %>
+      <%= render partial: 'layouts/pull_refresh' %>
 
       <% if !@hide_header %>
         <header class="bar bar-title">
@@ -20,7 +21,7 @@
         </header>
       <% end %>
 
-      <div class="content"><%= yield %></div>
+      <div class="content"> <span class="pull">sup</span> <%= yield %></div>
 
       <% if !@hide_footer %>
         <%= render partial: "layouts/footer_nav" %>
