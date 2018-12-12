@@ -1,0 +1,11 @@
+<div class="table-view">
+  <% @shifts.each do |shift| %>
+    <%= link_to admin_shift_path(shift), class: "table-view-cell" do %>
+      <div class="cell-body">
+        <h3><%= shift.user.full_name %></h3>
+        <p><%= shift.title %></p>
+        <small>Tasks: <%= shift.assignments.count %></small>
+      </div>
+    <% end %>
+  <% end %>
+</div>
