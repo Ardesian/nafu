@@ -30,7 +30,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    &:not(:first-of-type):before {
+    &:not(:first-of-type):before, &.force-line:before {
       position: absolute;
       top: 0;
       right: 0;
@@ -70,6 +70,7 @@
       width: 100%;
       white-space: normal;
 
+      &.note { white-space: pre-wrap; }
       p:last-of-type {
         margin-bottom: 0;
       }

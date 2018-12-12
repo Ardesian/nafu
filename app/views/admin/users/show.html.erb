@@ -1,0 +1,38 @@
+<%= content_for(:back_button) do %>
+  <a href="<%= admin_users_path %>">Back</a>
+<% end %>
+<%= content_for(:forward_button) do %>
+  <a href="<%= edit_admin_user_path(@user) %>">Edit</a>
+<% end %>
+
+<div class="profile container">
+  <div class="avatar img-med">
+    <%= image_tag @user.avatar_url %>
+  </div>
+
+  <div class="table-view">
+    <div class="table-view-cell">
+      <div class="cell-body"><%= @user.full_name %></div>
+      <div class="cell-info">#<%= @user.id %></div>
+    </div>
+    <div class="table-view-cell"><%= @user.phone %></div>
+    <div class="table-view-cell"><%= @user.role.titleize %></div>
+    <a href="<%= admin_shifts_path(user_id: @user.id) %>" class="table-view-cell force-line">
+      <div class="cell-body">
+        History
+      </div>
+    </a>
+  </div>
+
+  <% @user.all_notes.each do |note| %>
+    <div class="table-label">
+      <%= note.created_at.to_formatted_s(:simple_with_time) %>
+      <span class="pull-right">By: <%= note.author.full_name %></span>
+    </div>
+    <div class="table-view">
+      <div class="table-view-cell">
+        <div class="cell-detail note"><%= note.body %></div>
+      </div>
+    </div>
+  <% end %>
+</div>

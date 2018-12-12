@@ -39,6 +39,10 @@ class User < ApplicationRecord
   has_many :written_notes, class_name: "Note", inverse_of: :author
   has_notes
 
+  def all_notes
+    Note.where("author_id = :uid OR user_id = :uid", uid: id).order(created_at: :desc)
+  end
+
   def phone; candidate.cell_phone; end
 
   def avatar_url

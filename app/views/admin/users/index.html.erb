@@ -1,0 +1,15 @@
+<%= content_for(:back_button) do %>
+  <a href="<%= admin_path %>">Back</a>
+<% end %>
+
+<div class="table-view">
+  <% @users.each do |user| %>
+    <a href="<%= admin_user_path(user) %>" class="table-view-cell">
+      <img class="media-object pull-left" src="<%= image_url(user.avatar_url, host: root_domain) %>">
+      <div class="cell-detail">
+        <h3><%= user.full_name %></h3>
+        <p><%= user.role.titleize %></p>
+      </div>
+    </a>
+  <% end %>
+</div>

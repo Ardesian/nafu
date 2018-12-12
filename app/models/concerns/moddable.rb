@@ -3,6 +3,7 @@ module Moddable
 
   included do
     enum role: {
+      unemployed: 0,
       trainee:    10,
       competent:  20,
       trainer:    30,

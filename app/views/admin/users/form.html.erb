@@ -1,0 +1,51 @@
+<%= content_for(:back_button) do %>
+  <a href="<%= admin_user_path(@user) %>">Back</a>
+<% end %>
+
+<%= form_for [:admin, @user], data: parsley(:validate, trigger: :blur) do |f| %>
+  <%= render partial: "layouts/errors_container", locals: { resource: @user } %>
+
+  <div class="table-label">Personal</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.text_field :fname, placeholder: "First Name", autocomplete: :first_name, data: parsley(:required) %>
+    </div>
+
+    <div class="input-row">
+      <%= f.text_field :mname, placeholder: "Middle Name (Optional)", autocomplete: :middle_name %>
+    </div>
+
+    <div class="input-row">
+      <%= f.text_field :lname, placeholder: "Last Name", autocomplete: :last_name, data: parsley(:required) %>
+    </div>
+  </div>
+
+  <div class="table-label">Contact</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.text_field :email, placeholder: "Email", autocomplete: :email, data: parsley(:required, type: :email) %>
+    </div>
+
+    <div class="input-row">
+      <%= f.text_field :phone, placeholder: "Phone #", autocomplete: :cell_phone, data: parsley(:required) %>
+    </div>
+  </div>
+
+  <div class="table-label">Role</div>
+  <div class="table-view">
+    <div class="input-row select-wrapper">
+      <%= f.select :role, User.roles.collect { |role, val| [role.titleize, role] }, { data: parsley(:required) } %>
+    </div>
+  </div>
+
+  <div class="table-label">Add Note</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= notes_field(f) %>
+    </div>
+  </div>
+
+  <div class="block">
+    <%= f.submit "Submit Application", class: "btn" %>
+  </div>
+<% end %>
