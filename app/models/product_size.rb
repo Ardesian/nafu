@@ -11,7 +11,12 @@
 #
 
 class ProductSize < ApplicationRecord
+  has_many :trays
+  has_many :assignments
+  has_many :goals
+
   scope :available, -> { where(available: true) }
+  scope :unavailable, -> { where(available: [false, nil]) }
 
   defaults available: true
 end

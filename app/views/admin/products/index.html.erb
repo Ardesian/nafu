@@ -15,31 +15,24 @@
         <%= product.name %>
       </div>
       <div class="cell-info">
-        <% if product.available? %>
-          <i class="fas fa-check green"></i>
-        <% else %>
-          <i class="fas fa-cross red"></i>
-        <% end %>
+        <i class="fas fa-check green"></i>
       </div>
     </a>
   <% end %>
 </div>
 
-<% return if @products.unavailable.none? %>
-<div class="table-label">Unavailable</div>
-<div class="table-view">
-  <% @products.unavailable.each do |product| %>
-    <a href="<%= edit_admin_product_path(product) %>" class="table-view-cell">
-      <div class="cell-body">
-        <%= product.name %>
-      </div>
-      <div class="cell-info">
-        <% if product.available? %>
-          <i class="fas fa-check green"></i>
-        <% else %>
-          <i class="fas fa-cross red"></i>
-        <% end %>
-      </div>
-    </a>
-  <% end %>
-</div>
+<% if @products.unavailable.any? %>
+  <div class="table-label">Unavailable</div>
+  <div class="table-view">
+    <% @products.unavailable.each do |product| %>
+      <a href="<%= edit_admin_product_path(product) %>" class="table-view-cell">
+        <div class="cell-body">
+          <%= product.name %>
+        </div>
+        <div class="cell-info">
+          <i class="fas fa-times red"></i>
+        </div>
+      </a>
+    <% end %>
+  </div>
+<% end %>

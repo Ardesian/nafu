@@ -3,7 +3,6 @@ class ::Admin::ProductsController < ::Admin::BaseController
   before_action { @title = "Products" }
 
   def index
-    @title = "Products"
     @products = Product.order(name: :asc)
   end
 
