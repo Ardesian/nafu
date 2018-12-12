@@ -1,4 +1,14 @@
 module ApplicationHelper
+
+  def render_modal(id, title, additional_classes="", &block)
+    render({
+      layout: "layouts/modal",
+      locals: { id: id, title: title, additional_classes: additional_classes }
+    }) do
+      block.call
+    end
+  end
+
   def root_domain
     url_opts = ActionMailer::Base.default_url_options
     port_str = url_opts[:host] == "localhost" ? ":#{url_opts[:port]}" : ""

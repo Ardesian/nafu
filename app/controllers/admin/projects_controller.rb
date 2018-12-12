@@ -1,5 +1,5 @@
 class ::Admin::ProjectsController < ::Admin::BaseController
-  before_action { @project = Project.find(params[:id]) if params[:id].present? }
+  before_action :setup
   before_action { @title = "Project" }
 
   def index
@@ -7,10 +7,8 @@ class ::Admin::ProjectsController < ::Admin::BaseController
     @projects = Project.current.order(created_at: :desc)
   end
 
-  def show
-  end
-
   def edit
+    
   end
 
   def update
@@ -22,6 +20,10 @@ class ::Admin::ProjectsController < ::Admin::BaseController
   end
 
   private
+
+  def setup
+    @project = Project.find(params[:id]) if params[:id].present?
+  end
 
   def project_params
     params.require(:project).permit(

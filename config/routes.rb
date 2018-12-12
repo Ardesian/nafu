@@ -30,7 +30,9 @@ Rails.application.routes.draw do
     resources :assignments,   except: [:new, :create, :destroy]
     resources :products,      except: [:new, :create, :destroy]
     resources :product_sizes, except: [:new, :create, :destroy]
-    resources :projects,      except: [:new, :create, :destroy]
+    resources :projects,      except: [:new, :create, :destroy] do
+      resources :goals, except: [:index, :show]
+    end
   end
 
   get :flash_message, controller: :application

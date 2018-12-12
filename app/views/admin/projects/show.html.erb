@@ -1,13 +1,15 @@
-<!-- Should be able to add/edit specific goals -->
 <div class="table-view">
-  <div class="table-view-cell">
+  <a href="<%= edit_admin_project_path(@project) %>" class="table-view-cell">
     <%= render partial: "title_cell", locals: { project: @project } %>
-  </div>
+  </a>
 </div>
 
+<div class="table-label text-right">
+  <%= link_to "Add Goal", new_admin_project_goal_path(@project) %>
+</div>
 <div class="table-view">
   <% @project.goals.each do |goal| %>
-    <div class="table-view-cell">
+    <a href="<%= edit_admin_project_goal_path(@project, goal) %>" class="table-view-cell">
       <div class="cell-body">
         <ul class="task-cell">
           <li><%= goal.product.name %></li>
@@ -18,6 +20,6 @@
           <progress value="<%= goal.current_amount %>" max="<%= goal.desired_amount %>"><%= goal.progress_percentage %>%</progress>
         </div>
       </div>
-    </div>
+    </a>
   <% end %>
 </div>

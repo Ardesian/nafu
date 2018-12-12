@@ -1,0 +1,28 @@
+<%= content_for(:back_button) do %>
+  <a href="<%= admin_project_path(@project) %>">Back</a>
+<% end %>
+
+<%= form_for [:admin, @project, @goal], data: parsley(:validate, trigger: :blur) do |f| %>
+  <%= render partial: "layouts/errors_container", locals: { resource: @goal } %>
+
+  <div class="table-label">Product</div>
+  <div class="table-view">
+    <div class="input-row select-wrapper">
+      <%= f.select :product_id, @products.pluck(:name, :id), { include_blank: "Select Product" }, { data: parsley(:required) } %>
+    </div>
+    <div class="input-row select-wrapper">
+      <%= f.select :product_size_id, @sizes.pluck(:name, :id), { include_blank: "Select Size" }, { data: parsley(:required) } %>
+    </div>
+  </div>
+
+  <div class="table-label">Goal Amount</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.number_field :desired_amount, { data: parsley(:required) } %>
+    </div>
+  </div>
+
+  <div class="block">
+    <%= f.submit nil, class: "btn" %>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+<% content_for :modals do %>
+  <div class="page-wrapper modal offscreen" id="<%= id %>" tabindex="-1">
+    <header class="bar bar-title">
+      <div class="title"><%= title || "--" %></div>
+    </header>
+  <% end %>
+
+  <div class="content"><%= yield %></div>
+<% end %>

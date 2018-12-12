@@ -9,9 +9,10 @@
       <%= javascript_include_tag "channels/shift_leads_channel.js" %>
     <% end %>
 
-    <div class="page-wrapper">
+    <div class="page-wrapper" data-page="1">
       <%= render partial: 'layouts/flashes' %>
       <%= render partial: 'layouts/pull_refresh' %>
+      <%= yield :modals %>
 
       <% if !@hide_header %>
         <header class="bar bar-title">

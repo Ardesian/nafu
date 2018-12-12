@@ -36,4 +36,9 @@ body, .page-wrapper {
   }
 }
 
+.page-wrapper.modal.offscreen {
+  top: 100%;
+  transition: top 0.3s;
+}
+
 a { color: $link-color; }
