@@ -1,0 +1,12 @@
+<div class="cell-body">
+  <p><%= project.name %></p>
+  <div class="cell-detail">
+    <% if project.goal_bottles > 0 %>
+      <%= number_with_delimiter(project.current_bottles) %> / <%= number_with_delimiter(project.goal_bottles) %>
+      <div class="progress-wrapper">
+        <span class="timeline" style="left: <%= project.timeline_percentage %>%"></span>
+        <progress value="<%= project.current_bottles %>" max="<%= project.goal_bottles %>"><%= project.progress_percentage %>%</progress>
+      </div>
+    <% end %>
+  </div>
+</div>

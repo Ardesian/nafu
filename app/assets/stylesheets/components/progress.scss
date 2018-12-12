@@ -1,0 +1,17 @@
+.progress-wrapper {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  .timeline {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: gold;
+    width: 4px;
+  }
+  progress {
+    width: 100%;
+  }
+}

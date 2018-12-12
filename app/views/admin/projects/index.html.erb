@@ -1,1 +1,7 @@
-<!-- Show overall progress bar -->
+<div class="table-view">
+  <% @projects.each do |project| %>
+    <a href="<%= admin_project_path(project) %>" class="table-view-cell">
+      <%= render partial: "title_cell", locals: { project: project } %>
+    </a>
+  <% end %>
+</div>

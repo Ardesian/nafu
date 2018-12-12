@@ -4,11 +4,21 @@ class ::Admin::CandidatesController < ::Admin::BaseController
     Candidate.pending.order(created_at: :desc)
   end
 
-  private
+  def show
+    @resource = @resource_type.find(params[:id])
+  end
 
-  def resource_params
-    params.require(:candidate).permit(
-      notes: [:author_id, :body]
-    )
+  def edit
+    @resource = @resource_type.find(params[:id])
+  end
+
+  def update
+    @resource = @resource_type.find(params[:id])
+
+    if @resource.update(resource_params)
+      redirect_to :admin, @resource
+    else
+      redirect_to :admin, :edit, @resource
+    end
   end
 end
