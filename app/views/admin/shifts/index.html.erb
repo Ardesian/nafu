@@ -1,3 +1,7 @@
+<%= content_for(:back_button) do %>
+  <a href="<%= admin_user_path(params[:user_id]) %>">Back</a>
+<% end %>
+
 <div class="table-view">
   <% @shifts.each do |shift| %>
     <%= link_to admin_shift_path(shift), class: "table-view-cell" do %>

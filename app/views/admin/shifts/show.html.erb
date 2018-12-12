@@ -1,3 +1,7 @@
+<%= content_for(:back_button) do %>
+  <a href="<%= admin_shifts_path(params.permit(:user_id)) %>">Back</a>
+<% end %>
+
 <div class="table-view">
   <div class="table-view-cell">
     <div class="cell-body">Team Lead</div>
