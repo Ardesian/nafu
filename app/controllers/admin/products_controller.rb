@@ -4,11 +4,11 @@ class ::Admin::ProductsController < ::Admin::BaseController
 
   def index
     @title = "Products"
-    @projects = Product.current.order(created_at: :desc)
+    @products = Product.order(name: :asc)
   end
 
   def new
-    @project = Product.new
+    @product = Product.new
 
     render :form
   end
@@ -18,8 +18,8 @@ class ::Admin::ProductsController < ::Admin::BaseController
   end
 
   def update
-    if @project.update(project_params)
-      redirect_to [:admin, @project]
+    if @product.update(product_params)
+      redirect_to [:admin, :products]
     else
       render :form
     end
@@ -28,15 +28,13 @@ class ::Admin::ProductsController < ::Admin::BaseController
   private
 
   def setup
-    @project = Product.find(params[:id]) if params[:id].present?
+    @product = Product.find(params[:id]) if params[:id].present?
   end
 
-  def project_params
-    params.require(:project).permit(
+  def product_params
+    params.require(:product).permit(
       :name,
-      :description,
-      :start_date,
-      :end_date
+      :available
     )
   end
 end

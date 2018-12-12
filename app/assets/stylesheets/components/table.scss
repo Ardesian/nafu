@@ -45,6 +45,12 @@
     }
     .cell-info {
       color: $bar-border;
+
+      i.fas {
+        margin-right: 10px;
+        &.green { color: green; }
+        &.red { color: red; }
+      }
     }
     i.fas.fa-chevron-right {
       color: $bar-border;

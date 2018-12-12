@@ -15,6 +15,7 @@ class Product < ApplicationRecord
   has_many :goals
 
   scope :available, -> { where(available: true) }
+  scope :unavailable, -> { where(available: [false, nil]) }
 
   defaults available: true
 end
