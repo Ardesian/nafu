@@ -37,9 +37,9 @@ class ::Admin::ProjectsController < ::Admin::BaseController
 
   def destroy
     if @project.destroy
-      render :form
-    else
       redirect_to admin_products_path
+    else
+      render :form
     end
   end
 

@@ -33,6 +33,15 @@ class ::Admin::GoalsController < ::Admin::BaseController
     end
   end
 
+  def destroy
+    if @goal.destroy
+      redirect_to [:admin, @project]
+    else
+      form_details
+      render :form
+    end
+  end
+
   private
 
   def form_details

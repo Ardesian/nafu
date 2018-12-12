@@ -26,3 +26,9 @@
     <%= f.submit nil, class: "btn" %>
   </div>
 <% end %>
+
+<% if @goal.persisted? %>
+  <p class="text-center">
+    <%= link_to "Delete Goal", admin_project_goal_path(@goal), class: "danger", method: :delete, data: { confirm: "Are you sure?" } %>
+  </p>
+<% end %>
