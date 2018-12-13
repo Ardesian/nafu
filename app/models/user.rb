@@ -46,7 +46,9 @@ class User < ApplicationRecord
   def phone; candidate.cell_phone; end
 
   def avatar_url
-    avatar.attached? ? avatar : "default-avatar.png"
+    return "default-avatar.png" unless avatar.attached?
+
+    Rails.application.routes.url_helpers.rails_blob_url(avatar, only_path: true)
   end
 
   def full_name
