@@ -22,6 +22,11 @@
         History
       </div>
     </a>
+    <a href="<%= admin_candidate_path(@user.candidate) %>" class="table-view-cell">
+      <div class="cell-body">
+        Application
+      </div>
+    </a>
   </div>
 
   <% @user.all_notes.each do |note| %>

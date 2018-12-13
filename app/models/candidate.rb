@@ -31,6 +31,10 @@ class Candidate < ApplicationRecord
 
   scope :pending, -> { where(approved_at: nil, denied_at: nil) }
 
+  def full_name
+    [fname, mname, lname].map(&:presence).compact.join(" ")
+  end
+
   def approved?; approved_at?; end
 
   def password; end
@@ -39,20 +43,24 @@ class Candidate < ApplicationRecord
   end
 
   def approve!
-    user = User.create(
-      encrypted_password: encrypted_password,
-      email: email,
-      phone: cell_phone,
-      fname: fname,
-      mname: mname,
-      lname: lname,
-    )
+    if user.nil?
+      employee = User.create(
+        encrypted_password: encrypted_password,
+        email: email,
+        phone: cell_phone,
+        fname: fname,
+        mname: mname,
+        lname: lname,
+      )
 
-    return user unless user.persisted?
-    update(approved_at: Time.current, user: user, denied_at: nil)
+      return employee unless employee.persisted?
+    end
+
+    update(approved_at: Time.current, user: user || employee, denied_at: nil)
   end
 
   def deny!
+    user.update(role: :unemployed) if user.present?
     update(denied_at: Time.current, approved_at: nil)
   end
 end

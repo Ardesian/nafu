@@ -27,23 +27,28 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user
+    if user_signed_in? && !current_user.try(:trainee?)
+      sign_out :user
+      return redirect_to new_user_session_path, alert: "You do not have permission to visit this page."
+    end
+
     unless current_user.present?
       session[:forwarding_url] = request.original_url if request.get?
-      redirect_to new_user_session_path, notice: "Please sign in first."
+      redirect_to new_user_session_path, alert: "Please sign in first."
     end
   end
 
   def authenticate_team_lead
     unless current_user.try(:team_lead?)
       session[:forwarding_url] = request.original_url if request.get?
-      redirect_to new_user_session_path, notice: "You do not have permission to visit this page."
+      redirect_to new_user_session_path, alert: "You do not have permission to visit this page."
     end
   end
 
   def authenticate_admin
     unless current_user.try(:admin?)
       session[:forwarding_url] = request.original_url if request.get?
-      redirect_to new_user_session_path, notice: "You do not have permission to visit this page."
+      redirect_to new_user_session_path, alert: "You do not have permission to visit this page."
     end
   end
 

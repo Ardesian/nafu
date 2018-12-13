@@ -1,24 +1,25 @@
 class ::Admin::CandidatesController < ::Admin::BaseController
+  before_action :setup
 
   def index
-    Candidate.pending.order(created_at: :desc)
-  end
-
-  def show
-    @resource = @resource_type.find(params[:id])
-  end
-
-  def edit
-    @resource = @resource_type.find(params[:id])
+    @title = "Applications"
+    @candidates = Candidate.pending.order(created_at: :desc)
   end
 
   def update
-    @resource = @resource_type.find(params[:id])
-
-    if @resource.update(resource_params)
-      redirect_to :admin, @resource
-    else
-      redirect_to :admin, :edit, @resource
+    if params[:approve] == "true"
+      @candidate.approve!
+    elsif params[:deny] == "true"
+      @candidate.deny!
     end
+
+    redirect_to [:admin, :candidates]
+  end
+
+  private
+
+  def setup
+    @title = "Application"
+    @candidate = Candidate.find(params[:id]) if params[:id].present?
   end
 end

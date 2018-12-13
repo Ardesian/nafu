@@ -1,3 +1,14 @@
 <%= content_for(:back_button) do %>
   <a href="<%= admin_path %>">Back</a>
 <% end %>
+
+<div class="table-view">
+  <% @candidates.each do |candidate| %>
+    <a href="<%= admin_candidate_path(candidate) %>" class="table-view-cell">
+      <div class="cell-detail">
+        <h3><%= candidate.full_name %></h3>
+        <p><%= candidate.created_at.to_formatted_s(:simple_with_time) %></p>
+      </div>
+    </a>
+  <% end %>
+</div>
