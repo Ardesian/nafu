@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
 
   def set_notifications
     @login_queue = Rails.cache.fetch("login_queue") { {} } if current_user.try(:team_lead?)
+    @pending_applications = Candidate.pending.count if current_user.try(:admin?)
   end
 
   def unauthenticate_user

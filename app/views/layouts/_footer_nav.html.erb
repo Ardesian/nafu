@@ -20,6 +20,7 @@
   </a>
   <% if current_user.admin? %>
     <a class="tab-item <%= 'active' if is_controller?(:admin) %>" href="<%= admin_path %>">
+      <i class="badge" data-value="<%= @pending_applications %>"></i>
       <i class="fas fa-lock"></i>
       <span class="tab-label">Admin</span>
     </a>
