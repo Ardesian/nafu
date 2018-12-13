@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   resource :admin, controller: :admin, only: [:show]
   namespace :admin do
     resources :candidates,    except: [:new, :create, :destroy]
-    resources :users,         except: [:new, :create, :destroy]
+    resources :users,         except: [:new, :create, :destroy] do
+      resources :candidates, only: [:show]
+    end
     resources :shifts,        except: [:new, :create, :destroy]
     resources :assignments,   except: [:new, :create, :destroy]
     resources :products,      except: [:destroy]

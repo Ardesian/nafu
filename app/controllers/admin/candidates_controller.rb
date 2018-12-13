@@ -3,7 +3,12 @@ class ::Admin::CandidatesController < ::Admin::BaseController
 
   def index
     @title = "Applications"
-    @candidates = Candidate.pending.order(created_at: :desc)
+    @all_candidates = Candidate.order(created_at: :desc)
+    @filter_applied = params[:denied] == "true" || params[:approved] == "true"
+
+    @candidates = @all_candidates.pending unless @filter_applied
+    @candidates = @all_candidates.approved if params[:approved] == "true"
+    @candidates = @all_candidates.denied if params[:denied] == "true"
   end
 
   def update
@@ -21,5 +26,6 @@ class ::Admin::CandidatesController < ::Admin::BaseController
   def setup
     @title = "Application"
     @candidate = Candidate.find(params[:id]) if params[:id].present?
+    @user = User.find(params[:user_id]) if params[:user_id].present?
   end
 end

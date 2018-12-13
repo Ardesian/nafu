@@ -1,5 +1,5 @@
 <%= content_for(:back_button) do %>
-  <a href="<%= @candidate.user.present? ? admin_user_path(@candidate.user) : admin_candidates_path %>">Back</a>
+  <a href="<%= @user.present? ? admin_user_path(@user) : admin_candidates_path %>">Back</a>
 <% end %>
 
 <div class="table-view">

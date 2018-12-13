@@ -44,10 +44,10 @@
       width: 100%;
     }
     .cell-info {
+      margin-right: 10px;
       color: $bar-border;
 
       i.fas {
-        margin-right: 10px;
         &.green { color: green; }
         &.red { color: red; }
       }

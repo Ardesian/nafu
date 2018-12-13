@@ -1,5 +1,22 @@
 <%= content_for(:back_button) do %>
-  <a href="<%= admin_path %>">Back</a>
+  <a href="<%= @filter_applied ? admin_candidates_path : admin_path %>">Back</a>
+<% end %>
+
+<% unless @filter_applied %>
+  <div class="table-view">
+    <a href="<%= admin_candidates_path(approved: true) %>" class="table-view-cell">
+      <div class="cell-body">Approved Applications</div>
+      <div class="cell-info">
+        (<%= number_with_delimiter(@all_candidates.approved.count) %>)
+      </div>
+    </a>
+    <a href="<%= admin_candidates_path(denied: true) %>" class="table-view-cell">
+      <div class="cell-body">Denied Applications</div>
+      <div class="cell-info">
+        (<%= number_with_delimiter(@all_candidates.denied.count) %>)
+      </div>
+    </a>
+  </div>
 <% end %>
 
 <div class="table-view">
@@ -8,6 +25,13 @@
       <div class="cell-detail">
         <h3><%= candidate.full_name %></h3>
         <p><%= candidate.created_at.to_formatted_s(:simple_with_time) %></p>
+      </div>
+      <div class="cell-info">
+        <% if candidate.approved? %>
+          <i class="fas fa-check green"></i>
+        <% elsif candidate.denied? %>
+          <i class="fas fa-times red"></i>
+        <% end %>
       </div>
     </a>
   <% end %>

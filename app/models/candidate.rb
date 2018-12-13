@@ -30,6 +30,8 @@ class Candidate < ApplicationRecord
   belongs_to :user, optional: true # (Required after approved)
 
   scope :pending, -> { where(approved_at: nil, denied_at: nil) }
+  scope :approved, -> { where.not(approved_at: nil) }
+  scope :denied, -> { where.not(denied_at: nil) }
 
   def full_name
     [fname, mname, lname].map(&:presence).compact.join(" ")
