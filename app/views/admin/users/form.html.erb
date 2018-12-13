@@ -5,6 +5,16 @@
 <%= form_for [:admin, @user], data: parsley(:validate, trigger: :blur) do |f| %>
   <%= render partial: "layouts/errors_container", locals: { resource: @user } %>
 
+  <div class="table-label">Mugshot</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.label :avatar, class: "file-input" do %>
+        <i class="fas fa-file-image"></i> Upload (<span class="filename"><%= @user.avatar.try(:filename).presence || "No file selected" %></span>)
+        <%= f.file_field :avatar %>
+      <% end %>
+    </div>
+  </div>
+
   <div class="table-label">Personal</div>
   <div class="table-view">
     <div class="input-row">
@@ -46,6 +56,6 @@
   </div>
 
   <div class="block">
-    <%= f.submit "Submit Application", class: "btn" %>
+    <%= f.submit "Update Employee", class: "btn" %>
   </div>
 <% end %>

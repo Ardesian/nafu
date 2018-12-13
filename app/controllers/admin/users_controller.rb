@@ -28,6 +28,7 @@ class ::Admin::UsersController < ::Admin::BaseController
 
   def update
     if @user.update(user_params)
+      @user.avatar.attach(params.dig(:user, :avatar))
       redirect_to [:admin, @user]
     else
       render :form

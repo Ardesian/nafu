@@ -1,13 +1,20 @@
 .input-row {
   @extend .table-view-cell;
 
-  input[type=text], input[type=number], input[type=submit], input[type=password], input[type=search], input[type=email], textarea, select {
+  .file-input, input[type=text], input[type=number], input[type=submit], input[type=password], input[type=search], input[type=email], textarea, select {
     padding: 0 10px;
     width: 100%;
     min-height: $table-cell-height;
     font-size: 16px;
   }
   textarea { padding: 10px; }
+  .file-input {
+    display: flex;
+    align-items: center;
+
+    i.fas { margin-right: 10px; }
+    input[type=file] { display: none; }
+  }
   &.select-wrapper {
     display: flex;
     position: relative;
