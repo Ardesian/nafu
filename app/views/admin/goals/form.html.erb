@@ -18,7 +18,7 @@
   <div class="table-label">Goal Amount</div>
   <div class="table-view">
     <div class="input-row">
-      <%= f.number_field :desired_amount, { data: parsley(:required) } %>
+      <%= f.number_field :desired_amount, { data: parsley(:required), pattern: "[0-9]*" } %>
     </div>
   </div>
 

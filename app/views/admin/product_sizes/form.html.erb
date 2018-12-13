@@ -15,7 +15,7 @@
   <div class="table-label">Amount per tray</div>
   <div class="table-view">
     <div class="input-row">
-      <%= f.text_field :amount_per_tray, class: "super-input", data: parsley(:required) %>
+      <%= f.number_field :amount_per_tray, class: "super-input", data: parsley(:required), pattern: "[0-9]*" %>
     </div>
   </div>
 
