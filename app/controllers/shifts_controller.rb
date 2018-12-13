@@ -26,7 +26,7 @@ class ShiftsController < ApplicationController
     @duties = Duty.available.order(:name)
 
     @assignment = current_user.assignments.order(:updated_at).last.try(:dup) || current_user.assignments.new
-    @assignment.assign_attributes(shift_id: @shift.id, tray_id: nil)
+    @assignment.assign_attributes(shift_id: @shift.id)
 
     render "assignments/new"
   end

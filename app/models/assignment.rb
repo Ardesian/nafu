@@ -32,10 +32,10 @@ class Assignment < ApplicationRecord
   before_validation :find_or_create_tray
   after_commit :update_goals
 
-  def tray_number; tray.try(:tray_number); end
+  def tray_number; persisted? ? tray.try(:tray_number) : tray.try(:tray_number)&.try(:+, 1); end
   def tray_number=(new_tray_number)
     return if tray_id.present?
-    return @temp_tray_number = tray_number unless project_id.present? && product_id.present? && product_size_id.present?
+    return @temp_tray_number = new_tray_number unless project_id.present? && product_id.present? && product_size_id.present?
 
     self.tray = Tray.find_or_create_by(project: project, product: product, product_size: product_size, tray_number: new_tray_number)
   end
