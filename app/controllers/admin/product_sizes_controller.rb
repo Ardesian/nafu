@@ -44,7 +44,8 @@ class ::Admin::ProductSizesController < ::Admin::BaseController
     params.require(:product_size).permit(
       :name,
       :available,
-      :amount_per_tray
+      :amount_per_tray,
+      :expected_time_in_minutes
     )
   end
 end
