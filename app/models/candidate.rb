@@ -38,6 +38,7 @@ class Candidate < ApplicationRecord
   end
 
   def approved?; approved_at?; end
+  def denied?; denied_at?; end
 
   def password; end
   def password=(new_password)
