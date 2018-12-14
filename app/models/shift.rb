@@ -12,6 +12,8 @@
 #
 
 class Shift < ApplicationRecord
+  include TimeHelper
+  
   belongs_to :team_lead, class_name: "User", required: true
   belongs_to :user, required: true
 
@@ -36,6 +38,15 @@ class Shift < ApplicationRecord
 
   def title
     created_at.strftime("%b %-d, %Y - %-I:%M %p")
+  end
+
+  def duration
+    return 0 unless ended_at.present? && started_at.present?
+    (ended_at.to_i - started_at.to_i) - pauses.sum(&:duration)
+  end
+
+  def duration_in_words
+    super(duration)
   end
 
   def complete!
