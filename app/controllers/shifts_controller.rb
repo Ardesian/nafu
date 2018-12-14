@@ -20,11 +20,14 @@ class ShiftsController < ApplicationController
     @shift = current_user.current_shift
     @title = "Task Details"
 
+    return redirect_to [:edit, @shift.current_task] if @shift.current_task.present?
+
     @projects = Project.current.order(end_date: :desc)
     @products = Product.available.order(:name)
     @sizes = ProductSize.available.order(:name)
     @duties = Duty.available.order(:name)
 
+    @shift.resume!
     @assignment = current_user.assignments.order(:updated_at).last.try(:dup) || current_user.assignments.new
     @assignment.assign_attributes(shift_id: @shift.id)
 

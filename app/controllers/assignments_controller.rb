@@ -1,5 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :authenticate_user
+  after_action { @assignment&.shift&.resume! }
 
   def create
     @assignment = current_user.assignments.create(assignment_params.merge(started_at: Time.current))

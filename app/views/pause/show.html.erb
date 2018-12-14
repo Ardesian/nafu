@@ -1,0 +1,19 @@
+<div class="table-view">
+  <div class="table-view-cell">
+    <div class="cell-detail">
+      You are currently on break. Click the button below to resume your shift.
+    </div>
+  </div>
+</div>
+
+<div class="pause-wrapper">
+  <% if @pause.assignment_id.present? %>
+    <%= link_to [:edit, @pause.assignment], class: "pause-button" do %>
+      <i class="fas fa-play"></i>
+    <% end %>
+  <% else %>
+    <%= link_to current_shifts_path, class: "pause-button" do %>
+      <i class="fas fa-play"></i>
+    <% end %>
+  <% end %>
+</div>

@@ -13,7 +13,8 @@
 class Pause < ApplicationRecord
   belongs_to :user
   belongs_to :shift
-  belongs_to :assignment
+  belongs_to :assignment, optional: true
 
+  scope :active, -> { where.not(started_at: nil).where(ended_at: nil) }
   scope :valid, -> { where.not(started_at: nil, ended_at: nil) }
 end

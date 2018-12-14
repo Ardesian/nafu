@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resource :account, controller: :account, only: [ :show, :edit, :update ]
   resource :queue, controller: :queue, only: [:show]
+  get :pause, controller: :pause
   resources :shifts, only: [:new, :create, :index, :show] do
     get :current, on: :collection
     post :complete, on: :collection

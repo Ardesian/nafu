@@ -18,6 +18,22 @@ class Shift < ApplicationRecord
   has_many :assignments
   has_many :pauses
 
+  def current_pause
+    pauses.find_by(ended_at: nil)
+  end
+
+  def current_task
+    assignments.find_by(ended_at: nil)
+  end
+
+  def pause!(assignment_id=nil)
+    current_pause || pauses.create(started_at: Time.current, user: user, assignment_id: assignment_id)
+  end
+
+  def resume!
+    current_pause&.update(ended_at: Time.current)
+  end
+
   def title
     created_at.strftime("%b %-d, %Y - %-I:%M %p")
   end

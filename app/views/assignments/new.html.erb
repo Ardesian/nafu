@@ -25,12 +25,17 @@
   <div class="table-label">Tray</div>
   <div class="table-view">
     <div class="input-row">
-      <%= f.number_field :tray_number, placeholder: "#", class: "super-input", data: parsley(:required), pattern: "[0-9]*" %>
+      <%= f.number_field :tray_number, placeholder: "#", class: "super-input", data: parsley(:required), pattern: "[0-9]*", autocomplete: :off %>
     </div>
   </div>
 
   <div class="block">
     <%= f.submit "Begin Task", class: "btn" %>
   </div>
-
 <% end %>
+
+<div class="pause-wrapper">
+  <%= link_to pause_path, class: "pause-button" do %>
+    <i class="fas fa-pause"></i>
+  <% end %>
+</div>

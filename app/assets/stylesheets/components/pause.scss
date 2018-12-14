@@ -1,0 +1,16 @@
+.pause-wrapper {
+  margin: 30px auto;
+  width: 100%;
+  text-align: center;
+
+  .pause-button {
+    display: inline-block;
+    border-radius: 100%;
+    background: rgba($bar-color, 0.7);
+    width: 150px;
+    height: 150px;
+    color: $link-color;
+    font-size: 70px;
+    line-height: 150px;
+  }
+}

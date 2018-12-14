@@ -4,7 +4,7 @@
   <div class="table-label">Quantity Completed</div>
   <div class="table-view">
     <div class="input-row">
-      <%= f.number_field :filled, value: @assignment.product_size.amount_per_tray, class: "super-input", data: parsley(:required), pattern: "[0-9]*"  %>
+      <%= f.number_field :filled, value: @assignment.product_size.amount_per_tray, class: "super-input", data: parsley(:required), pattern: "[0-9]*", autocomplete: :off  %>
     </div>
   </div>
 
@@ -19,3 +19,9 @@
     <%= f.submit "Complete Tray", class: "btn" %>
   </div>
 <% end %>
+
+<div class="pause-wrapper">
+  <%= link_to pause_path(assignment_id: @assignment.id), class: "pause-button" do %>
+    <i class="fas fa-pause"></i>
+  <% end %>
+</div>
