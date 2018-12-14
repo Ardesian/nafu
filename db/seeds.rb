@@ -60,7 +60,7 @@ product_names = ["Alert (Orange)", "Breathe (Green)", "Crave (Yellow)", "Harmony
 products = product_names.map { |product| Product.create(name: product) }
 
 size_labels = ["5ml", "10ml", "15ml", "30ml", "Amber Bottle", "Blue Bottle", "Green Bottle"]
-sizes = size_labels.map { |label| ProductSize.create(name: label, amount_per_tray: 196) }
+sizes = size_labels.map.with_index { |label, idx| ProductSize.create(name: label, amount_per_tray: 196, expected_time_in_minutes: 5 + idx) }
 
 duty_names = ["Prep", "Insert", "Hammer", "Cap", "Drill", "QC Caps"]
 duties = duty_names.map { |duty| Duty.create(name: duty) }
