@@ -3,17 +3,12 @@ class ShiftLeadsChannel < ApplicationCable::Channel
     stream_from "login_queue"
   end
 
-  def unsubscribed
-    # Remove from global list
-  end
-
   def approve(data)
     return unless current_user.team_lead?
     data.deep_symbolize_keys!
-    shift = User.find(data[:uid]).shifts.create(started_at: Time.current, team_lead: current_user)
+    user = User.find(data[:uid])
+    shift = user.current_shift || user.shifts.create(started_at: Time.current, team_lead: current_user)
     shift_url = Rails.application.routes.url_helpers.current_shifts_path
-    ShiftsChannel.broadcast_to(shift.user, shift_url: shift_url)
+    ShiftsChannel.broadcast_to(user, shift_url: shift_url)
   end
-
-  # Approving via queue page creates a shift then redirects user to that shift.
 end
