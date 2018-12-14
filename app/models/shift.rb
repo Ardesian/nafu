@@ -14,7 +14,9 @@
 class Shift < ApplicationRecord
   belongs_to :team_lead, class_name: "User", required: true
   belongs_to :user, required: true
+
   has_many :assignments
+  has_many :pauses
 
   def title
     created_at.strftime("%b %-d, %Y - %-I:%M %p")

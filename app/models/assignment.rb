@@ -26,6 +26,8 @@ class Assignment < ApplicationRecord
   belongs_to :duty,         required: true
   belongs_to :tray,         required: true
 
+  has_many :pauses
+
   has_notes
 
   attr_accessor :temp_tray_number

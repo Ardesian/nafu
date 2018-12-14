@@ -36,6 +36,7 @@ class User < ApplicationRecord
 
   has_many :assignments
   has_many :shifts
+  has_many :pauses
   has_many :written_notes, class_name: "Note", inverse_of: :author
   has_notes
 

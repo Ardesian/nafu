@@ -96,6 +96,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
       t.string :name
       t.boolean :available
       t.integer :amount_per_tray
+      t.integer :expected_time_in_minutes
 
       t.timestamps
     end
@@ -106,6 +107,15 @@ class InitialDb < ActiveRecord::Migration[5.2]
       t.boolean :available
 
       t.timestamps
+    end
+
+    create_table :pauses do |t|
+      t.belongs_to :user
+      t.belongs_to :shift
+      t.belongs_to :assignment
+      
+      t.datetime :started_at
+      t.datetime :ended_at
     end
 
     create_table :assignments do |t|

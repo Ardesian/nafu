@@ -118,10 +118,22 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
+  create_table "pauses", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "shift_id"
+    t.bigint "assignment_id"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.index ["assignment_id"], name: "index_pauses_on_assignment_id"
+    t.index ["shift_id"], name: "index_pauses_on_shift_id"
+    t.index ["user_id"], name: "index_pauses_on_user_id"
+  end
+
   create_table "product_sizes", force: :cascade do |t|
     t.string "name"
     t.boolean "available"
     t.integer "amount_per_tray"
+    t.integer "expected_time_in_minutes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
