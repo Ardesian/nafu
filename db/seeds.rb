@@ -60,13 +60,15 @@ product_names = ["Alert (Orange)", "Breathe (Green)", "Crave (Yellow)", "Harmony
 sizes = ["5ml", "10ml", "15ml", "30ml", "Amber Bottle", "Blue Bottle", "Green Bottle"]
 colors = ["Blue", "Orange", "Amber", "Green"]
 
-products = product_names.map do |product|
-  sizes.each do |size|
-    colors.each do |color|
-      Product.create(oil: product, color: color, size: size)
-    end
-  end
+products = product_names.map do |product_name|
+  Product.create(name: product_name)
 end
+
+styles = sizes.map do |size|
+  colors.map do |color|
+    ProductStyle.create(color: color, size: size, amount_per_tray: 192)
+  end
+end.flatten
 
 duty_names = ["Prep", "Insert", "Hammer", "Cap", "Drill", "QC Caps"]
 duties = duty_names.map { |duty| Duty.create(name: duty) }
@@ -82,7 +84,7 @@ project = Project.create(
   end_date: 1.week.from_now,
 )
 products.sample(5).each do |product|
-  size = sizes.sample
-  puts "DEBUG: #{project.name}:#{product.name}:#{size.name}".colorize(:red)
-  project.goals.create(project: project, product: product, product_style: size, desired_amount: (rand(10) + 5) * 1000)
+  style = styles.sample
+  puts "DEBUG: #{project.name}:#{product.name}:#{style.name}".colorize(:red)
+  project.goals.create(project: project, product: product, product_style: style, desired_amount: (rand(10) + 5) * 1000)
 end

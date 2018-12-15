@@ -93,20 +93,25 @@ class InitialDb < ActiveRecord::Migration[5.2]
     end
 
     create_table :product_styles do |t|
-      t.string :oil
       t.string :color
       t.string :size
       t.boolean :available
       t.integer :amount_per_tray
-      t.integer :expected_time_in_minutes
 
       t.timestamps
     end
 
     create_table :duties do |t|
       t.string :name
-      t.integer :expected_qty
       t.boolean :available
+
+      t.timestamps
+    end
+
+    create_table :duty_styles do |t|
+      t.belongs_to :duty
+      t.belongs_to :product_style
+      t.integer :minutes_per_tray
 
       t.timestamps
     end

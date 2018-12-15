@@ -85,10 +85,19 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
 
   create_table "duties", force: :cascade do |t|
     t.string "name"
-    t.integer "expected_qty"
     t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "duty_styles", force: :cascade do |t|
+    t.bigint "duty_id"
+    t.bigint "product_style_id"
+    t.integer "minutes_per_tray"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["duty_id"], name: "index_duty_styles_on_duty_id"
+    t.index ["product_style_id"], name: "index_duty_styles_on_product_style_id"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -130,12 +139,10 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
   end
 
   create_table "product_styles", force: :cascade do |t|
-    t.string "oil"
     t.string "color"
     t.string "size"
     t.boolean "available"
     t.integer "amount_per_tray"
-    t.integer "expected_time_in_minutes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
