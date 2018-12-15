@@ -36,7 +36,7 @@ class AssignmentsController < ApplicationController
 
     @projects = Project.current.order(end_date: :desc)
     @products = Product.available.order(:name)
-    @sizes = ProductSize.available.order(:name)
+    @styles = ProductStyle.available.order(:name)
     @duties = Duty.available.order(:name)
   end
 
@@ -45,7 +45,7 @@ class AssignmentsController < ApplicationController
       :shift_id,
       :project_id,
       :product_id,
-      :product_size_id,
+      :product_style_id,
       :duty_id,
       :tray_number,
       :filled,

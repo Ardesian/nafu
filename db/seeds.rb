@@ -57,10 +57,16 @@ candidate = Candidate.create(
 candidate.approve!
 
 product_names = ["Alert (Orange)", "Breathe (Green)", "Crave (Yellow)", "Harmony (Blue)", "Serene (Purple)", "Travel (Pink)"]
-products = product_names.map { |product| Product.create(name: product) }
+sizes = ["5ml", "10ml", "15ml", "30ml", "Amber Bottle", "Blue Bottle", "Green Bottle"]
+colors = ["Blue", "Orange", "Amber", "Green"]
 
-size_labels = ["5ml", "10ml", "15ml", "30ml", "Amber Bottle", "Blue Bottle", "Green Bottle"]
-sizes = size_labels.map.with_index { |label, idx| ProductSize.create(name: label, amount_per_tray: 196, expected_time_in_minutes: 5 + idx) }
+products = product_names.map do |product|
+  sizes.each do |size|
+    colors.each do |color|
+      Product.create(oil: product, color: color, size: size)
+    end
+  end
+end
 
 duty_names = ["Prep", "Insert", "Hammer", "Cap", "Drill", "QC Caps"]
 duties = duty_names.map { |duty| Duty.create(name: duty) }
@@ -78,5 +84,5 @@ project = Project.create(
 products.sample(5).each do |product|
   size = sizes.sample
   puts "DEBUG: #{project.name}:#{product.name}:#{size.name}".colorize(:red)
-  project.goals.create(project: project, product: product, product_size: size, desired_amount: (rand(10) + 5) * 1000)
+  project.goals.create(project: project, product: product, product_style: size, desired_amount: (rand(10) + 5) * 1000)
 end

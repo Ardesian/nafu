@@ -1,9 +1,9 @@
 <%= content_for(:back_button) do %>
-  <a href="<%= admin_product_sizes_path %>">Back</a>
+  <a href="<%= admin_product_styles_path %>">Back</a>
 <% end %>
 
-<%= form_for [:admin, @product_size], data: parsley(:validate, trigger: :blur) do |f| %>
-  <%= render partial: "layouts/errors_container", locals: { resource: @product_size } %>
+<%= form_for [:admin, @product_style], data: parsley(:validate, trigger: :blur) do |f| %>
+  <%= render partial: "layouts/errors_container", locals: { resource: @product_style } %>
 
   <div class="table-label">Name</div>
   <div class="table-view">

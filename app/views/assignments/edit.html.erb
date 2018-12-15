@@ -4,7 +4,7 @@
   <div class="table-label">Quantity Completed</div>
   <div class="table-view">
     <div class="input-row">
-      <%= f.number_field :filled, value: @assignment.product_size.amount_per_tray, class: "super-input", data: parsley(:required), pattern: "[0-9]*", autocomplete: :off  %>
+      <%= f.number_field :filled, value: @assignment.product_style.amount_per_tray, class: "super-input", data: parsley(:required), pattern: "[0-9]*", autocomplete: :off  %>
     </div>
   </div>
 

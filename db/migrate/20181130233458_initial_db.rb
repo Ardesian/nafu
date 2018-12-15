@@ -69,7 +69,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
     create_table :goals do |t|
       t.belongs_to :project # required
       t.belongs_to :product # required
-      t.belongs_to :product_size # required
+      t.belongs_to :product_style # required
       t.integer :current_amount
       t.integer :desired_amount
 
@@ -79,7 +79,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
     create_table :trays do |t|
       t.belongs_to :project # required
       t.belongs_to :product # required
-      t.belongs_to :product_size # required
+      t.belongs_to :product_style # required
       t.integer :tray_number # (special- unique per project/product)
 
       t.timestamps
@@ -92,8 +92,10 @@ class InitialDb < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    create_table :product_sizes do |t|
-      t.string :name
+    create_table :product_styles do |t|
+      t.string :oil
+      t.string :color
+      t.string :size
       t.boolean :available
       t.integer :amount_per_tray
       t.integer :expected_time_in_minutes
@@ -113,7 +115,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
       t.belongs_to :user
       t.belongs_to :shift
       t.belongs_to :assignment
-      
+
       t.datetime :started_at
       t.datetime :ended_at
     end
@@ -123,7 +125,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
       t.belongs_to :project # required
       t.belongs_to :shift # required
       t.belongs_to :product # required
-      t.belongs_to :product_size # required
+      t.belongs_to :product_style # required
       t.belongs_to :tray # required
       t.belongs_to :duty # required
       t.integer :filled

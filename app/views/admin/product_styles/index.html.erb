@@ -2,17 +2,17 @@
   <a href="<%= admin_path %>">Back</a>
 <% end %>
 <%= content_for(:forward_button) do %>
-  <a href="<%= new_admin_product_size_path %>">
+  <a href="<%= new_admin_product_style_path %>">
     <i class="fas fa-plus"></i>
   </a>
 <% end %>
 
 <div class="table-label">Available</div>
 <div class="table-view">
-  <% @product_sizes.available.each do |product_size| %>
-    <a href="<%= edit_admin_product_size_path(product_size) %>" class="table-view-cell">
+  <% @product_styles.available.each do |product_style| %>
+    <a href="<%= edit_admin_product_style_path(product_style) %>" class="table-view-cell">
       <div class="cell-body">
-        <%= product_size.name %>
+        <%= product_style.name %>
       </div>
       <div class="cell-info">
         <i class="fas fa-check green"></i>
@@ -21,13 +21,13 @@
   <% end %>
 </div>
 
-<% if @product_sizes.unavailable.any? %>
+<% if @product_styles.unavailable.any? %>
   <div class="table-label">Unavailable</div>
   <div class="table-view">
-    <% @product_sizes.unavailable.each do |product_size| %>
-      <a href="<%= edit_admin_product_size_path(product_size) %>" class="table-view-cell">
+    <% @product_styles.unavailable.each do |product_style| %>
+      <a href="<%= edit_admin_product_style_path(product_style) %>" class="table-view-cell">
         <div class="cell-body">
-          <%= product_size.name %>
+          <%= product_style.name %>
         </div>
         <div class="cell-info">
           <i class="fas fa-times red"></i>

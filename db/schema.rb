@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
     t.bigint "project_id"
     t.bigint "shift_id"
     t.bigint "product_id"
-    t.bigint "product_size_id"
+    t.bigint "product_style_id"
     t.bigint "tray_id"
     t.bigint "duty_id"
     t.integer "filled"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
     t.datetime "updated_at", null: false
     t.index ["duty_id"], name: "index_assignments_on_duty_id"
     t.index ["product_id"], name: "index_assignments_on_product_id"
-    t.index ["product_size_id"], name: "index_assignments_on_product_size_id"
+    t.index ["product_style_id"], name: "index_assignments_on_product_style_id"
     t.index ["project_id"], name: "index_assignments_on_project_id"
     t.index ["shift_id"], name: "index_assignments_on_shift_id"
     t.index ["tray_id"], name: "index_assignments_on_tray_id"
@@ -94,13 +94,13 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
   create_table "goals", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "product_id"
-    t.bigint "product_size_id"
+    t.bigint "product_style_id"
     t.integer "current_amount"
     t.integer "desired_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_goals_on_product_id"
-    t.index ["product_size_id"], name: "index_goals_on_product_size_id"
+    t.index ["product_style_id"], name: "index_goals_on_product_style_id"
     t.index ["project_id"], name: "index_goals_on_project_id"
   end
 
@@ -129,8 +129,10 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
     t.index ["user_id"], name: "index_pauses_on_user_id"
   end
 
-  create_table "product_sizes", force: :cascade do |t|
-    t.string "name"
+  create_table "product_styles", force: :cascade do |t|
+    t.string "oil"
+    t.string "color"
+    t.string "size"
     t.boolean "available"
     t.integer "amount_per_tray"
     t.integer "expected_time_in_minutes"
@@ -168,12 +170,12 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
   create_table "trays", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "product_id"
-    t.bigint "product_size_id"
+    t.bigint "product_style_id"
     t.integer "tray_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_trays_on_product_id"
-    t.index ["product_size_id"], name: "index_trays_on_product_size_id"
+    t.index ["product_style_id"], name: "index_trays_on_product_style_id"
     t.index ["project_id"], name: "index_trays_on_project_id"
   end
 

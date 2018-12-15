@@ -24,7 +24,7 @@ class ShiftsController < ApplicationController
 
     @projects = Project.current.order(end_date: :desc)
     @products = Product.available.order(:name)
-    @sizes = ProductSize.available.order(:name)
+    @styles = ProductStyle.available.order(:name)
     @duties = Duty.available.order(:name)
 
     @shift.resume!

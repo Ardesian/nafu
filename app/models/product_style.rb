@@ -1,9 +1,11 @@
 # == Schema Information
 #
-# Table name: product_sizes
+# Table name: product_styles
 #
 #  id                       :bigint(8)        not null, primary key
-#  name                     :string
+#  oil                      :string
+#  color                    :string
+#  size                     :string
 #  available                :boolean
 #  amount_per_tray          :integer
 #  expected_time_in_minutes :integer
@@ -11,7 +13,7 @@
 #  updated_at               :datetime         not null
 #
 
-class ProductSize < ApplicationRecord
+class ProductStyle < ApplicationRecord
   has_many :trays
   has_many :assignments
   has_many :goals
@@ -20,4 +22,8 @@ class ProductSize < ApplicationRecord
   scope :unavailable, -> { where(available: [false, nil]) }
 
   defaults available: true
+
+  def name
+    [size, color, oil].map(&:presence).compact.join(" ")
+  end
 end

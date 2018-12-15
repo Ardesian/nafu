@@ -46,7 +46,7 @@ class ::Admin::GoalsController < ::Admin::BaseController
 
   def form_details
     @products = Product.available.order(:name)
-    @sizes = ProductSize.available.order(:name)
+    @styles = ProductStyle.available.order(:name)
   end
 
   def setup
@@ -57,7 +57,7 @@ class ::Admin::GoalsController < ::Admin::BaseController
   def goal_params
     params.require(:goal).permit(
       :product_id,
-      :product_size_id,
+      :product_style_id,
       :desired_amount
     )
   end

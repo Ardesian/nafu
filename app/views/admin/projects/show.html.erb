@@ -17,7 +17,7 @@
       <div class="cell-body">
         <ul class="task-cell">
           <li><%= goal.product.name %></li>
-          <li><%= goal.product_size.name %></li>
+          <li><%= goal.product_style.name %></li>
         </ul>
         <%= number_with_delimiter(goal.current_amount.to_i) %> / <%= number_with_delimiter(goal.desired_amount.to_i) %>
         <div class="progress-wrapper">

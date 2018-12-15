@@ -2,19 +2,19 @@
 #
 # Table name: assignments
 #
-#  id              :bigint(8)        not null, primary key
-#  user_id         :bigint(8)
-#  project_id      :bigint(8)
-#  shift_id        :bigint(8)
-#  product_id      :bigint(8)
-#  product_size_id :bigint(8)
-#  tray_id         :bigint(8)
-#  duty_id         :bigint(8)
-#  filled          :integer
-#  started_at      :datetime
-#  ended_at        :datetime
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id               :bigint(8)        not null, primary key
+#  user_id          :bigint(8)
+#  project_id       :bigint(8)
+#  shift_id         :bigint(8)
+#  product_id       :bigint(8)
+#  product_style_id :bigint(8)
+#  tray_id          :bigint(8)
+#  duty_id          :bigint(8)
+#  filled           :integer
+#  started_at       :datetime
+#  ended_at         :datetime
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 
 class Assignment < ApplicationRecord
@@ -24,7 +24,7 @@ class Assignment < ApplicationRecord
   belongs_to :project,      required: true
   belongs_to :shift,        required: true
   belongs_to :product,      required: true
-  belongs_to :product_size, required: true
+  belongs_to :product_style, required: true
   belongs_to :duty,         required: true
   belongs_to :tray,         required: true
 
@@ -39,9 +39,9 @@ class Assignment < ApplicationRecord
   def tray_number; persisted? ? tray.try(:tray_number) : tray.try(:tray_number)&.try(:+, 1); end
   def tray_number=(new_tray_number)
     return if tray_id.present?
-    return @temp_tray_number = new_tray_number unless project_id.present? && product_id.present? && product_size_id.present?
+    return @temp_tray_number = new_tray_number unless project_id.present? && product_id.present? && product_style_id.present?
 
-    self.tray = Tray.find_or_create_by(project: project, product: product, product_size: product_size, tray_number: new_tray_number)
+    self.tray = Tray.find_or_create_by(project: project, product: product, product_style: product_style, tray_number: new_tray_number)
   end
 
   def duration
@@ -56,7 +56,7 @@ class Assignment < ApplicationRecord
   private
 
   def update_goals
-    project.goals.where(product_id: product_id, product_size_id: product_size_id).find_each(&:update_current_amount)
+    project.goals.where(product_id: product_id, product_style_id: product_style_id).find_each(&:update_current_amount)
   end
 
   def find_or_create_tray

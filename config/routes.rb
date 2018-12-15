@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :shifts,        except: [:new, :create, :destroy]
     resources :assignments,   except: [:new, :create, :destroy]
     resources :products,      except: [:destroy]
-    resources :product_sizes, except: [:destroy]
+    resources :product_styles, except: [:destroy]
     resources :projects do
       resources :goals, except: [:index, :show]
     end
