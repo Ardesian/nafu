@@ -1,0 +1,38 @@
+<%= content_for(:back_button) do %>
+  <a href="<%= admin_path %>">Back</a>
+<% end %>
+<%= content_for(:forward_button) do %>
+  <%= link_to [:new, :admin, :duty] do %>
+    <i class="fas fa-plus"></i>
+  <% end %>
+<% end %>
+
+<div class="table-label">Available</div>
+<div class="table-view">
+  <% @tasks.available.each do |task| %>
+    <%= link_to [:edit, :admin, task], class: "table-view-cell" do %>
+      <div class="cell-body">
+        <%= task.name %>
+      </div>
+      <div class="cell-info">
+        <i class="fas fa-check green"></i>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<% if @tasks.unavailable.any? %>
+  <div class="table-label">Unavailable</div>
+  <div class="table-view">
+    <% @tasks.unavailable.each do |task| %>
+      <%= link_to [:edit, :admin, task], class: "table-view-cell" do %>
+        <div class="cell-body">
+          <%= task.name %>
+        </div>
+        <div class="cell-info">
+          <i class="fas fa-times red"></i>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

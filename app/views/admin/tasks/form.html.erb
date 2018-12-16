@@ -1,0 +1,28 @@
+<%= content_for(:back_button) do %>
+  <a href="<%= admin_duties_path %>">Back</a>
+<% end %>
+
+<%= form_for [:admin, @task], data: parsley(:validate, trigger: :blur) do |f| %>
+  <%= render partial: "layouts/errors_container", locals: { resource: @task } %>
+
+  <div class="table-label">Name</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.text_field :name, { data: parsley(:required) } %>
+    </div>
+  </div>
+
+  <div class="table-label">Available for display?</div>
+  <div class="table-view">
+    <div class="table-view-cell">
+      <div class="cell-body">
+        Available
+      </div>
+      <%= slider(f, :available) %>
+    </div>
+  </div>
+
+  <div class="block">
+    <%= f.submit nil, class: "btn" %>
+  </div>
+<% end %>

@@ -29,10 +29,11 @@ Rails.application.routes.draw do
     resources :users,         except: [:new, :create, :destroy] do
       resources :candidates, only: [:show]
     end
-    resources :shifts,        except: [:new, :create, :destroy]
-    resources :assignments,   except: [:new, :create, :destroy]
-    resources :products,      except: [:destroy]
-    resources :product_styles, except: [:destroy]
+    resources :duties, path: :tasks, controller: :tasks, except: [:destroy]
+    resources :shifts,                     except: [:new, :create, :destroy]
+    resources :assignments,                except: [:new, :create, :destroy]
+    resources :products,                   except: [:destroy]
+    resources :product_styles,             except: [:destroy]
     resources :projects do
       resources :goals, except: [:index, :show]
     end

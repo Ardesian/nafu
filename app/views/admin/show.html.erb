@@ -1,22 +1,25 @@
 <div class="table-label">Project Management</div>
 <div class="table-view">
-  <a href="<%= admin_projects_path %>" class="table-view-cell">
+  <%= link_to [:admin, :projects], class: "table-view-cell" do %>
     <div class="cell-body">Projects</div>
-  </a>
-  <a href="<%= admin_products_path %>" class="table-view-cell">
+  <% end %>
+  <%= link_to [:admin, :products], class: "table-view-cell" do %>
     <div class="cell-body">Products</div>
-  </a>
-  <a href="<%= admin_product_styles_path %>" class="table-view-cell">
+  <% end %>
+  <%= link_to [:admin, :product_styles], class: "table-view-cell" do %>
     <div class="cell-body">Product Styles</div>
-  </a>
+  <% end %>
+  <%= link_to [:admin, :duties], class: "table-view-cell" do %>
+    <div class="cell-body">Tasks</div>
+  <% end %>
 </div>
 
 <div class="table-label">Employee Management</div>
 <div class="table-view">
-  <a href="<%= admin_candidates_path %>" class="table-view-cell">
+  <%= link_to [:admin, :candidates], class: "table-view-cell" do %>
     <div class="cell-body">Applications</div>
-  </a>
-  <a href="<%= admin_users_path %>" class="table-view-cell">
+  <% end %>
+  <%= link_to [:admin, :users], class: "table-view-cell" do %>
     <div class="cell-body">Employees</div>
-  </a>
+  <% end %>
 </div>
