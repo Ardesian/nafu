@@ -3,7 +3,7 @@ class ::Admin::ProductStylesController < ::Admin::BaseController
   before_action { @title = "Product Sizes" }
 
   def index
-    @product_styles = ProductStyle.order(name: :asc)
+    @product_styles = ProductStyle.order(id: :asc)
   end
 
   def new

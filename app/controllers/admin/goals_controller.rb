@@ -46,7 +46,7 @@ class ::Admin::GoalsController < ::Admin::BaseController
 
   def form_details
     @products = Product.available.order(:name)
-    @styles = ProductStyle.available.order(:name)
+    @styles = ProductStyle.available.order(:size)
   end
 
   def setup
