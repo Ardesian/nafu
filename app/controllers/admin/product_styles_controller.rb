@@ -1,6 +1,6 @@
 class ::Admin::ProductStylesController < ::Admin::BaseController
   before_action :setup
-  before_action { @title = "Product Sizes" }
+  before_action { @title = "Product Styles" }
 
   def index
     @product_styles = ProductStyle.order(id: :asc)
