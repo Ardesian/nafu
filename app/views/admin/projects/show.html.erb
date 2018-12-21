@@ -8,16 +8,16 @@
   </a>
 </div>
 
-<!-- <div class="table-view">
-  <a href="" class="table-view-cell">
+<div class="table-view">
+  <%= link_to [:admin, @project, :bottle_types], class: "table-view-cell" do %>
     <div class="cell-body">
       Bottle Types
     </div>
     <div class="cell-info">
-      (<%=  %>)
+      (<%= @project.project_bottle_types.count %>)
     </div>
-  </a>
-</div> -->
+  <% end %>
+</div>
 
 <div class="table-label text-right">
   <%= link_to "Add Goal", new_admin_project_goal_path(@project) %>
@@ -38,20 +38,3 @@
     </a>
   <% end %>
 </div>
-
-<!-- <div class="table-label">
-  Bottle Types
-  <a href="" class="pull-right">Add Bottle Type</a>
-</div>
-<div class="table-view">
-  <% @project.goals.each do |goal| %>
-    <a href="<%= edit_admin_project_goal_path(@project, goal) %>" class="table-view-cell">
-      <div class="cell-body">
-        <ul class="task-cell">
-          <li><%= goal.product.name %></li>
-          <li><%= goal.product_style.name %></li>
-        </ul>
-      </div>
-    </a>
-  <% end %>
-</div> -->

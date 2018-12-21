@@ -42,7 +42,8 @@ class ::Admin::ProductStylesController < ::Admin::BaseController
 
   def product_style_params
     params.require(:product_style).permit(
-      :name,
+      :size,
+      :color,
       :available,
       :amount_per_tray,
       :expected_time_in_minutes

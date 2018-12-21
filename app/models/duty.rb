@@ -10,10 +10,7 @@
 #
 
 class Duty < ApplicationRecord
+  include Availability
+
   has_many :assignments
-
-  scope :available, -> { where(available: true) }
-  scope :unavailable, -> { where(available: [nil, false]) }
-
-  defaults available: true
 end

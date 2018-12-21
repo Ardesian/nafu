@@ -5,10 +5,17 @@
 <%= form_for [:admin, @product_style], data: parsley(:validate, trigger: :blur) do |f| %>
   <%= render partial: "layouts/errors_container", locals: { resource: @product_style } %>
 
-  <div class="table-label">Name</div>
+  <div class="table-label">Size</div>
   <div class="table-view">
     <div class="input-row">
-      <%= f.text_field :name, { data: parsley(:required) } %>
+      <%= f.text_field :size, { data: parsley(:required) } %>
+    </div>
+  </div>
+
+  <div class="table-label">Color</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.text_field :color, { data: parsley(:required) } %>
     </div>
   </div>
 

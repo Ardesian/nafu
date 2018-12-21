@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :product_styles,             except: [:destroy]
     resources :projects do
       resources :goals, except: [:index, :show]
+      resource :bottle_types, only: [:show]
     end
   end
 

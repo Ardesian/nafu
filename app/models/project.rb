@@ -15,6 +15,7 @@ class Project < ApplicationRecord
   has_many :trays
   has_many :goals
   has_many :assignments
+  has_many :project_bottle_types
 
   scope :current, ->(now=Time.current) { where("(projects.start_date < :now OR projects.start_date IS NULL) AND (projects.end_date > :now OR projects.end_date IS NULL)", now: now.to_date) }
 

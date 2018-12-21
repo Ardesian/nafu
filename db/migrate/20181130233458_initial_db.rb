@@ -108,10 +108,12 @@ class InitialDb < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    create_table :duty_styles do |t|
+    create_table :project_bottle_types do |t|
+      t.belongs_to :project
       t.belongs_to :duty
       t.belongs_to :product_style
       t.integer :minutes_per_tray
+      t.boolean :available
 
       t.timestamps
     end

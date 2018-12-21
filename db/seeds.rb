@@ -3,7 +3,7 @@ candidate = Candidate.create(
   fname:      "Rocco",
   mname:      "DJ",
   lname:      "Nicholls",
-  email:      "rocco@zygy.com",
+  email:      "rocco@rdjn.me",
   address1:   "8062 S Lismore Ln",
   city:       "West Jordan",
   state:      "UT",
@@ -57,7 +57,7 @@ candidate = Candidate.create(
 candidate.approve!
 
 product_names = ["Alert (Orange)", "Breathe (Green)", "Crave (Yellow)", "Harmony (Blue)", "Serene (Purple)", "Travel (Pink)"]
-sizes = ["5ml", "10ml", "15ml", "30ml", "Amber Bottle", "Blue Bottle", "Green Bottle"]
+sizes = ["5ml", "10ml", "15ml", "30ml"]
 colors = ["Blue", "Orange", "Amber", "Green"]
 
 products = product_names.map do |product_name|
