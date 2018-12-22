@@ -96,7 +96,6 @@ class InitialDb < ActiveRecord::Migration[5.2]
       t.string :color
       t.string :size
       t.boolean :available
-      t.integer :amount_per_tray
 
       t.timestamps
     end
