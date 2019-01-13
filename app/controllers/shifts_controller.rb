@@ -20,6 +20,7 @@ class ShiftsController < ApplicationController
     @shift = current_user.current_shift
     @title = "Task Details"
 
+    return redirect_to account_path if @shift.blank?
     return redirect_to [:edit, @shift.current_task] if @shift.current_task.present?
 
     @projects = Project.current.order(end_date: :desc)

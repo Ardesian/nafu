@@ -10,6 +10,12 @@
     <div class="input-row">
       <%= f.text_field :name, { data: parsley(:required) } %>
     </div>
+    <div class="table-view-cell">
+      <div class="cell-body">
+        Administrative
+      </div>
+      <%= slider(f, :administrative) %>
+    </div>
   </div>
 
   <div class="table-label">Available for display?</div>

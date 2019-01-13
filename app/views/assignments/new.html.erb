@@ -15,7 +15,7 @@
       <%= f.select :product_id, @products.pluck(:name, :id), { include_blank: "Select Product" }, { data: parsley(:required) } %>
     </div>
     <div class="input-row select-wrapper">
-      <%= f.select :product_style_id, @styles.pluck(:name, :id), { include_blank: "Select Size" }, { data: parsley(:required) } %>
+      <%= f.select :product_style_id, @styles.collect { |product| [product.name, product.id]}, { include_blank: "Select Size" }, { data: parsley(:required) } %>
     </div>
     <div class="input-row select-wrapper">
       <%= f.select :duty_id, @duties.pluck(:name, :id), { include_blank: "Select Job" }, { data: parsley(:required) } %>

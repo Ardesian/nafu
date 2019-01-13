@@ -37,7 +37,7 @@ class ::Admin::ProductStylesController < ::Admin::BaseController
   private
 
   def render_form
-    @product_tasks = Duty.available.map do |duty|
+    @product_tasks = Duty.available.not_administrative.map do |duty|
       task_time = @product_style.product_task_times.find_by(duty_id: duty.id)
 
       {

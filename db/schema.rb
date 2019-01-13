@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
 
   create_table "duties", force: :cascade do |t|
     t.string "name"
+    t.boolean "administrative"
     t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -43,6 +43,7 @@ class ::Admin::TasksController < ::Admin::BaseController
   def user_params
     params.require(:duty).permit(
       :name,
+      :administrative,
       :available
     )
   end
