@@ -13,4 +13,5 @@ class Duty < ApplicationRecord
   include Availability
 
   has_many :assignments
+  has_many :product_task_times
 end

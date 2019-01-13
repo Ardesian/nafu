@@ -137,23 +137,21 @@ ActiveRecord::Schema.define(version: 2018_11_30_233458) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.boolean "available"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "project_bottle_types", force: :cascade do |t|
-    t.bigint "project_id"
+  create_table "product_task_times", force: :cascade do |t|
     t.bigint "duty_id"
     t.bigint "product_style_id"
     t.integer "minutes_per_tray"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["duty_id"], name: "index_project_bottle_types_on_duty_id"
-    t.index ["product_style_id"], name: "index_project_bottle_types_on_product_style_id"
-    t.index ["project_id"], name: "index_project_bottle_types_on_project_id"
+    t.index ["duty_id"], name: "index_product_task_times_on_duty_id"
+    t.index ["product_style_id"], name: "index_product_task_times_on_product_style_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.boolean "available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|

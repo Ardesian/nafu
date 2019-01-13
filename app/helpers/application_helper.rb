@@ -51,4 +51,10 @@ module ApplicationHelper
   def notes_field(f)
     "#{hidden_field_tag "#{f.object_name}[notes][author_id]", current_user.id}#{text_area_tag "#{f.object_name}[notes][body]"}".html_safe
   end
+
+  def form_args(*args)
+    top, *nested = [args].flatten
+    nested_str = nested.map { |nested_arg| "[#{nested_arg}]" }.join("")
+    "#{top}#{nested_str}"
+  end
 end

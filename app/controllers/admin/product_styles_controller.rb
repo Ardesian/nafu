@@ -1,6 +1,6 @@
 class ::Admin::ProductStylesController < ::Admin::BaseController
   before_action :setup
-  before_action { @title = "Product Styles" }
+  before_action { @title = "Product Sizes" }
 
   def index
     @product_styles = ProductStyle.order(id: :asc)
@@ -9,11 +9,11 @@ class ::Admin::ProductStylesController < ::Admin::BaseController
   def new
     @product_style = ProductStyle.new
 
-    render :form
+    render_form
   end
 
   def edit
-    render :form
+    render_form
   end
 
   def create
@@ -22,7 +22,7 @@ class ::Admin::ProductStylesController < ::Admin::BaseController
     if @product_style.save
       redirect_to [:admin, :product_styles]
     else
-      render :form
+      render_form
     end
   end
 
@@ -30,11 +30,25 @@ class ::Admin::ProductStylesController < ::Admin::BaseController
     if @product_style.update(product_style_params)
       redirect_to [:admin, :product_styles]
     else
-      render :form
+      render_form
     end
   end
 
   private
+
+  def render_form
+    @product_tasks = Duty.available.map do |duty|
+      task_time = @product_style.product_task_times.find_by(duty_id: duty.id)
+
+      {
+        duty_id: duty.id,
+        duty_name: duty.name,
+        minutes_per_tray: task_time.try(:minutes_per_tray)
+      }
+    end
+
+    render :form
+  end
 
   def setup
     @product_style = ProductStyle.find(params[:id]) if params[:id].present?
@@ -46,7 +60,10 @@ class ::Admin::ProductStylesController < ::Admin::BaseController
       :color,
       :available,
       :amount_per_tray,
-      :expected_time_in_minutes
+      duties: [
+        :duty_id,
+        :minutes_per_tray
+      ]
     )
   end
 end

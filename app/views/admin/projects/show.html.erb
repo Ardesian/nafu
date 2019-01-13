@@ -8,19 +8,8 @@
   </a>
 </div>
 
-<div class="table-view">
-  <%= link_to [:admin, @project, :bottle_types], class: "table-view-cell" do %>
-    <div class="cell-body">
-      Bottle Types
-    </div>
-    <div class="cell-info">
-      (<%= @project.project_bottle_types.count %>)
-    </div>
-  <% end %>
-</div>
-
 <div class="table-label text-right">
-  <%= link_to "Add Goal", new_admin_project_goal_path(@project) %>
+  <%= link_to "Add Product", new_admin_project_goal_path(@project) %>
 </div>
 <div class="table-view">
   <% @project.goals.each do |goal| %>
@@ -30,9 +19,14 @@
           <li><%= goal.product.name %></li>
           <li><%= goal.product_style.name %></li>
         </ul>
-        <%= number_with_delimiter(goal.current_amount.to_i) %> / <%= number_with_delimiter(goal.desired_amount.to_i) %>
+        <% infinite = !goal.desired_amount.to_i.positive? %>
+        <%= number_with_delimiter(goal.current_amount.to_i) %> / <%= infinite ? "∞" : number_with_delimiter(goal.desired_amount.to_i) %>
         <div class="progress-wrapper">
-          <progress value="<%= goal.current_amount %>" max="<%= goal.desired_amount %>"><%= goal.progress_percentage %>%</progress>
+          <% if infinite %>
+            <progress value="1" max="1">∞</progress>
+          <% else %>
+            <progress value="<%= goal.current_amount %>" max="<%= goal.desired_amount %>"><%= goal.progress_percentage %>%</progress>
+          <% end %>
         </div>
       </div>
     </a>

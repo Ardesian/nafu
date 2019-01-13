@@ -66,7 +66,7 @@ end
 
 styles = sizes.map do |size|
   colors.map do |color|
-    ProductStyle.create(color: color, size: size, amount_per_tray: 192)
+    ProductStyle.create(color: color, size: size, amount_per_tray: 196)
   end
 end.flatten
 

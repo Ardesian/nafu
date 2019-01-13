@@ -96,6 +96,7 @@ class InitialDb < ActiveRecord::Migration[5.2]
       t.string :color
       t.string :size
       t.boolean :available
+      t.integer :amount_per_tray
 
       t.timestamps
     end
@@ -107,12 +108,10 @@ class InitialDb < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    create_table :project_bottle_types do |t|
-      t.belongs_to :project
+    create_table :product_task_times do |t|
       t.belongs_to :duty
       t.belongs_to :product_style
       t.integer :minutes_per_tray
-      t.boolean :available
 
       t.timestamps
     end

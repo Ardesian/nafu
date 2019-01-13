@@ -17,8 +17,17 @@ class ProductStyle < ApplicationRecord
   has_many :trays
   has_many :assignments
   has_many :goals
+  has_many :product_task_times
+  has_many :duties, through: :product_task_times
 
   def name
     [size, color].map(&:presence).compact.join(" ")
+  end
+
+  def duties=(duty_args_list)
+    duty_args_list.each do |duty_args|
+      task_time = product_task_times.find_or_create_by(duty_args.slice(:duty_id))
+      task_time.update(duty_args)
+    end
   end
 end

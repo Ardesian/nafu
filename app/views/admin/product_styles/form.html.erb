@@ -19,6 +19,26 @@
     </div>
   </div>
 
+  <div class="table-label">Amount Per Tray</div>
+  <div class="table-view">
+    <div class="input-row">
+      <%= f.number_field :amount_per_tray, value: @product_style.amount_per_tray || 196, class: "super-input", data: parsley(:required), pattern: "[0-9]*", autocomplete: :off  %>
+    </div>
+  </div>
+
+  <div class="table-view">
+    <div class="input-group">
+      <% @product_tasks.each do |duty_data| %>
+        <% duty_fields = [:product_style, :duties, nil, :minutes_per_tray] %>
+        <div class="input-row">
+          <label for="<%= duty_fields.join('_') %>"><%= duty_data[:duty_name] %></label>
+          <%= hidden_field_tag form_args(:product_style, :duties, nil, :duty_id), duty_data[:duty_id] %>
+          <%= text_field_tag form_args(duty_fields), duty_data[:minutes_per_tray], placeholder: "Expected time per tray (minutes)" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
   <div class="table-label">Available for display?</div>
   <div class="table-view">
     <div class="table-view-cell">

@@ -1,5 +1,5 @@
 <%= content_for(:back_button) do %>
-  <a href="<%= admin_path %>">Back</a>
+  <%= link_to "Back", [:admin, :products] %>
 <% end %>
 <%= content_for(:forward_button) do %>
   <%= link_to [:new, :admin, :duty] do %>
