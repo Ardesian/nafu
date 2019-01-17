@@ -2,23 +2,42 @@
   <%= link_to "End Shift", complete_shifts_path, method: :post %>
 <% end %>
 
-<%= form_for @assignment, data: parsley(:validate, trigger: :blur) do |f| %>
+<%= form_for @assignment, data: parsley(:validate, trigger: :blur, excluded: "[disabled]") do |f| %>
   <%= render partial: "layouts/errors_container", locals: { resource: @assignment, error_title: "Failed to begin task. Please verify that all fields are filled in correctly and try again." } %>
   <%= f.hidden_field :shift_id, value: @assignment.shift_id %>
 
   <div class="table-label">Station</div>
   <div class="table-view">
     <div class="input-row select-wrapper">
-      <%= f.select :project_id, @projects.pluck(:name, :id), { include_blank: "Select Project" }, { data: parsley(:required) } %>
+      <%#
+        Iterate through each option
+        Conditionally show it based on where it's parents are correct
+        Show by using a hidden select field to store the hidden options.
+      %>
+      <%= f.select :duty_id, @duties.collect { |duty| ["#{duty.name}#{' (Administrative)' if duty.administrative?}", duty.id] }, { include_blank: "Select Job" }, { data: parsley(:required).merge(reveal: "selectedTask") } %>
     </div>
-    <div class="input-row select-wrapper">
-      <%= f.select :product_id, @products.pluck(:name, :id), { include_blank: "Select Product" }, { data: parsley(:required) } %>
+    <div class="input-row select-wrapper" data-selectedTask="<%= @duties.not_administrative.pluck(:id).join(" ") %>">
+      <%= f.select :project_id, {}, { data: parsley(:required).merge(reveal: "selectedProject") } do %>
+        <option>Select Project</option>
+        <% @projects.pluck(:name, :id).each do |name, id| %>
+          <option value="<%= id %>" class="<%= 'hide-option' if rand(2) == 1 %>"><%= name %></option>
+        <% end %>
+      <% end %>
     </div>
-    <div class="input-row select-wrapper">
-      <%= f.select :product_style_id, @styles.collect { |product| [product.name, product.id]}, { include_blank: "Select Size" }, { data: parsley(:required) } %>
+    <div class="input-row select-wrapper" data-selectedTask="<%= @duties.not_administrative.pluck(:id).join(" ") %>">
+      <%= f.select :product_id, {}, { data: parsley(:required).merge(reveal: "selectedProduct") } do %>
+        <option>Select Product</option>
+        <% @products.pluck(:name, :id).each do |name, id| %>
+          <option value="<%= id %>" class="<%= 'hide-option' if rand(2) == 1 %>"><%= name %></option>
+        <% end %>
+      <% end %>
+      <option value=""></option>
+      <select class="placeholder hidden"></select>
     </div>
-    <div class="input-row select-wrapper">
-      <%= f.select :duty_id, @duties.pluck(:name, :id), { include_blank: "Select Job" }, { data: parsley(:required) } %>
+    <div class="input-row select-wrapper" data-selectedTask="<%= @duties.not_administrative.pluck(:id).join(" ") %>">
+      <%= f.select :product_style_id, @styles.collect { |product| [product.name, product.id] }, { include_blank: "Select Size" }, { data: parsley(:required).merge(reveal: "selectedSize") } %>
+      <option value=""></option>
+      <select class="placeholder hidden"></select>
     </div>
   </div>
 
